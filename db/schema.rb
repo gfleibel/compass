@@ -10,8 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_161528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "matches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "mentor_id"
+    t.bigint "mentee_id"
+    t.index ["mentee_id"], name: "index_matches_on_mentee_id"
+    t.index ["mentor_id"], name: "index_matches_on_mentor_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "professional_field"
+    t.string "academic_degree"
+    t.string "programming_language"
+    t.string "mentor_current_employer"
+    t.text "transition_description"
+    t.date "mentor_transition_date"
+    t.string "github"
+    t.string "linkedin"
+    t.string "personal_site"
+    t.text "other_info"
+    t.integer "mentor_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "matches", "users", column: "mentee_id"
+  add_foreign_key "matches", "users", column: "mentor_id"
 end
