@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Cadastrar usuário</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -15,18 +15,16 @@
     <%= f.input :professional_field, label: "Área Profissional", required: true, as: :select, collection: ["Tecnologia", "Saúde", "Educação", "Engenharias", "Ciências Exatas", "Música, Artes e Design", "Ciências Sociais",  "Comunicação e Informação", "Negócios", "Ciências Biológicas", "Direito", "Outros"], prompt: "Selecione uma área profissional" %>
     <%= f.input :academic_degree, label: "Formação", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
     <%= f.input :programming_language, label: "Principal Linguagem de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
-
+    <%= f.input :mentor, as: :hidden, input_html: { value: params[:type] == "mentor" ? true : false } %>
     <% if params[:type] == "mentor" %>
       <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
       <%= f.input :mentor_transition_date, label: "Data de Transição", as: :date, input_html: { autocomplete: 'off' } %>
-    <% end %>
+      <% end %>
 
     <%= f.input :github, label: "GitHub", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
     <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
     <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
     <%= f.input :other_info, label: "Outras Informações", as: :text %>
-
-
   </div>
 
   <div class="form-actions">
