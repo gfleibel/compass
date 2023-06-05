@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get "contact", to: "pages#contact", as: :contact
   get "resources", to: "pages#resources", as: :resources
+  get "users/signup/:type", to: "registration#new", as: :new_type
 end
