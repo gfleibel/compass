@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_161528) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_05_163847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_161528) do
     t.datetime "updated_at", null: false
     t.bigint "mentor_id"
     t.bigint "mentee_id"
+    t.boolean "matched"
     t.index ["mentee_id"], name: "index_matches_on_mentee_id"
     t.index ["mentor_id"], name: "index_matches_on_mentor_id"
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_161528) do
     t.integer "mentor_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "mentor"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
