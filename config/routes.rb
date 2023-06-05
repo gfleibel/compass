@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     resources :mentee_matches, only: %i[new create destroy index]
     resources :mentor_matches, only: %i[new create destroy index]
   end
+
+  get "contact", to: "pages#contact", as: :contact
+  get "resources", to: "pages#resources", as: :resources
 end
