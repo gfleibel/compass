@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :mentor_matches, only: %i[new create destroy index]
   end
 
-  get "contact", to: "pages#contact", as: :contact
-  get "resources", to: "pages#resources", as: :resources
+  get "contato", to: "pages#contact", as: :contact
+  get "recursos", to: "pages#resources", as: :resources
+  get "condigo-de-conduta", to: "pages#conduct", as: :conduct
   get "users/signup/:type", to: "registration#new", as: :new_type
 end
