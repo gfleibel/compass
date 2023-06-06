@@ -1,0 +1,48 @@
+.footer {
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  margin-top: auto;
+}
+.footer-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+  .footer-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .footer-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  .footer-flex {
+    flex-direction: column;
+  }
+}
