@@ -6,4 +6,7 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+import StickyController from "./sticky_controller"
+application.register("sticky", StickyController)
+
 export { application }
