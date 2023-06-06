@@ -25,6 +25,7 @@
     <%= f.input :github, label: "GitHub", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
     <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
     <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :other_info, label: "Outras Informações", as: :text %>
   </div>
 
