@@ -80,3 +80,4 @@ gem "devise"
 gem "pundit"
 gem 'country_select', '~> 8.0'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
+gem "dotenv-rails", groups: [:development, :test]
