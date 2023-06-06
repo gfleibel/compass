@@ -2,10 +2,7 @@
   <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "https://static.thenounproject.com/png/264538-200.png" %>
-      <% end %>
-       <%= link_to root_path, class: "navbar-brand" do %>
-        <p class="navbar-brand-name">Compass</p>
+        <%= image_tag "compass" %>
       <% end %>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +28,7 @@
             <% if current_user.photo.key %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
             <% else %>
-              <%= image_tag "#", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+              <%= image_tag "user.png", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Editar Perfil",edit_user_registration_path(current_user), class: "dropdown-item" %>
