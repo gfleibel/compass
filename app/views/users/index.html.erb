@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container d-flex">
   <div class="profile-section d-flex flex-column">
     <% if current_user.photo.key %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill %>
+      <%= cl_image_tag current_user.photo.key, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill %>
     <% else %>
-      <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+      <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
     <% end %>
+
+    <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
 
     <% if current_user.github %>
       <%= link_to current_user.github %>
@@ -24,44 +26,25 @@
   </div>
   <div class="users-section">
     <h2>Mentores sugeridos</h2>
-    <div class="d-grid">
+    <div class="user-card-grid">
       <% @mentors.each do |mentor| %>
         <div class="user-card">
-          <div class="user-card-header">
+          <div class="user-card-img">
             <% if mentor.photo.key %>
-              <%= cl_image_tag mentor.photo.key, class: "avatar", height: 50, width: 50, crop: :fill%>
+              <%= cl_image_tag mentor.photo.key, height: 50, width: 50, crop: :fill%>
             <% else %>
-              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", class: "avatar", height: 50, width: 50, crop: :fill%>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", height: 50, width: 50, crop: :fill%>
             <% end %>
+          </div>
+          <div class="user-card-header">
             <div class="user-card-header-info">
-              <h3><%= mentor.name %></h3>
-              <p><%= mentor.occupation %></p>
+              <h3><%= "#{mentor.first_name} #{mentor.last_name}" %></h3>
+              <p><%= mentor.field_of_work %></p>
+              <p><%= mentor.mentor_current_employer %></p>
             </div>
           </div>
-          <div class="user-card-body">
-            <p><%= mentor.bio %></p>
-          </div>
-          <div class="user-card-footer">
-            <div class="user-card-footer-info">
-              <p><%= mentor.city %></p>
-              <p><%= mentor.state %></p>
-            </div>
-            <div class="user-card-footer-links">
-              <% if mentor.github %>
-                <%= link_to mentor.github, target: "_blank" do %>
-                  <%= image_tag "github.png", height: 20, width: 20 %>
-                <% end %>
-              <% end %>
-              <% if mentor.linkedin %>
-                <%= link_to mentor.linkedin, target: "_blank" do %>
-                  <%= image_tag "linkedin.png", height: 20, width: 20 %>
-                <% end %>
-              <% end %>
-              <% if mentor.personal_site %>
-                <%= link_to mentor.personal_site, target: "_blank" do %>
-                  <%= image_tag "personal_site.png", height: 20, width: 20 %>
-                <% end %>
-              <% end %>
+            <div class="user-card-footer">
+              <%= link_to "Acessar", user_path(mentor.id), class: "btn btn-danger text-light" %>
             </div>
           </div>
         </div>
