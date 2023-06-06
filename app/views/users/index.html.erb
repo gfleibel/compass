@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="profile-section d-flex flex-column">
+    <% if current_user.photo.key %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+    <% end %>
+
+    <% if current_user.github %>
+      <%= link_to current_user.github %>
+    <% end %>
+
+    <% if current_user.linkedin %>
+      <%= link_to current_user.linkedin %>
+    <% end %>
+
+    <% if current_user.personal_site %>
+      <%= link_to current_user.personal_site %>
+    <% end %>
+
+    <h3>Sobre mim:</h3>
+    <h3>Formação Profissional:</h3>
+    <h3>Motivação para a transição de carreira:</h3>
+  </div>
+  <div class="users-section">
+    <h2>Mentores sugeridos</h2>
+    <div class="d-grid">
+      <% @mentors.each do |mentor| %>
+        <div class="user-card">
+          <div class="user-card-header">
+            <% if mentor.photo.key %>
+              <%= cl_image_tag mentor.photo.key, class: "avatar", height: 50, width: 50, crop: :fill%>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", class: "avatar", height: 50, width: 50, crop: :fill%>
+            <% end %>
+            <div class="user-card-header-info">
+              <h3><%= mentor.name %></h3>
+              <p><%= mentor.occupation %></p>
+            </div>
+          </div>
+          <div class="user-card-body">
+            <p><%= mentor.bio %></p>
+          </div>
+          <div class="user-card-footer">
+            <div class="user-card-footer-info">
+              <p><%= mentor.city %></p>
+              <p><%= mentor.state %></p>
+            </div>
+            <div class="user-card-footer-links">
+              <% if mentor.github %>
+                <%= link_to mentor.github, target: "_blank" do %>
+                  <%= image_tag "github.png", height: 20, width: 20 %>
+                <% end %>
+              <% end %>
+              <% if mentor.linkedin %>
+                <%= link_to mentor.linkedin, target: "_blank" do %>
+                  <%= image_tag "linkedin.png", height: 20, width: 20 %>
+                <% end %>
+              <% end %>
+              <% if mentor.personal_site %>
+                <%= link_to mentor.personal_site, target: "_blank" do %>
+                  <%= image_tag "personal_site.png", height: 20, width: 20 %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
