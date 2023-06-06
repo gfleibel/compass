@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card">
+    <div>
+      <h3>Fale conosco</h3>
+      <%= simple_form_for (resource, as: resource_name, url: "/") do |form| %>
+      <%= form.input :nome %>
+      <%= form.input :email %>
+      <%= form.input :mensagem, as: :text %>
+    </div>
+
+    <div>
+      <%= form.button :submit, "Enviar" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
