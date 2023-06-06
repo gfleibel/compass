@@ -1,0 +1,52 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://static.thenounproject.com/png/264538-200.png" %>
+      <% end %>
+       <%= link_to root_path, class: "navbar-brand" do %>
+        <p class="navbar-brand-name">Compass</p>
+      <% end %>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto align-items-center">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active ms-4">
+            <%= link_to "Perfil", user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item active ms-4">
+            <%= link_to "Contato", contact_path, class: "nav-link" %>
+          </li>
+          <li class="ms-4">
+            Olá, <%= current_user.first_name%>
+          </li>
+          <li class="nav-item dropdown ms-4">
+            <% if current_user.photo.key %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+            <% else %>
+              <%= image_tag "#", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+            <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Editar Perfil",edit_user_registration_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Criar Conta", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
