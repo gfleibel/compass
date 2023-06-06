@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
-    @mentors = @users.where(mentor: true) #retorna array de mentores
+    @mentors = helpers.match(current_user)
   end
 
   def show

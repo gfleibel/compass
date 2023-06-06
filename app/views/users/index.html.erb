@@ -1,39 +1,39 @@
 <div class="container d-flex">
   <div class="profile-section d-flex flex-column">
-    <% if current_user.photo.key %>
-      <%= cl_image_tag current_user.photo.key, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill %>
-    <% else %>
-      <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
-    <% end %>
-
-    <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
-
-    <% if current_user.github %>
-      <%= link_to current_user.github %>
-    <% end %>
-
-    <% if current_user.linkedin %>
-      <%= link_to current_user.linkedin %>
-    <% end %>
-
-    <% if current_user.personal_site %>
-      <%= link_to current_user.personal_site %>
-    <% end %>
-
-    <h3>Sobre mim:</h3>
-    <h3>Formação Profissional:</h3>
-    <h3>Motivação para a transição de carreira:</h3>
+    <div class="profile-section-container" data-controller="sticky" data-target="sticky.container">
+      <% if current_user.photo.key %>
+        <%= cl_image_tag current_user.photo.key%>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+      <% end %>
+      <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+      <% if current_user.github %>
+        <%= link_to "GitHub", current_user.github %>
+      <% end %>
+      <% if current_user.linkedin %>
+        <%= link_to "LinkedIn", current_user.linkedin %>
+      <% end %>
+      <% if current_user.personal_site %>
+        <%= link_to "Website Pessoal",current_user.personal_site %>
+      <% end %>
+      <h3>Sobre mim:</h3>
+      <p>Oi, sou Ezra Bridger, um jovem e habilidoso morador de Lothal. Cresci em um mundo dominado pelo Império Galáctico, onde tive que aprender a me virar por conta própria. Sou curioso e aventureiro.</p>
+      <h3>Formação Profissional:</h3>
+      <p>Como um jovem órfão, tive que aprender a me virar nas ruas de Lothal. Minhas habilidades de sobrevivência e agilidade me tornaram um excelente ladrão e piloto.</p>
+      <h3>Motivação para a transição de carreira:</h3>
+      <p>Motivado por minha curiosidade e desejo de fazer a diferença, decidi explorar a tecnologia como uma forma de desafiar o Império e ajudar os oprimidos. Estou determinado a usar meus talentos para lutar pela justiça e liberdade, contribuindo com minha expertise tecnológica à Rebelião. Que a Força esteja comigo nessa jornada para um futuro melhor.</p>
+    </div>
   </div>
   <div class="users-section">
-    <h2>Mentores sugeridos</h2>
+    <h3><span style="color: rgb(205, 0, 0);">Mentores</span> sugeridos</h3>
     <div class="user-card-grid">
       <% @mentors.each do |mentor| %>
         <div class="user-card">
           <div class="user-card-img">
             <% if mentor.photo.key %>
-              <%= cl_image_tag mentor.photo.key, height: 50, width: 50, crop: :fill%>
+              <%= cl_image_tag mentor.photo.key%>
             <% else %>
-              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", height: 50, width: 50, crop: :fill%>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
             <% end %>
           </div>
           <div class="user-card-header">
@@ -43,9 +43,8 @@
               <p><%= mentor.mentor_current_employer %></p>
             </div>
           </div>
-            <div class="user-card-footer">
-              <%= link_to "Acessar", user_path(mentor.id), class: "btn btn-danger text-light" %>
-            </div>
+          <div class="user-card-footer">
+            <%= link_to "Acessar", user_path(mentor.id), class: "btn btn-danger text-light" %>
           </div>
         </div>
       <% end %>
