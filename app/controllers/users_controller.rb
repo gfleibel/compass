@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
   # before_action :set_user, only: %i[show edit update destroy]
-  # def index
-  #   @users = policy_scope(User)
-  #   if params[:mentor] == true
-  #     @mentees = @users.where(mentor: false)
-  #   else
-  #     @mentors = @users.where(mentor: true)
-  #   end
-  # end
 
-  # def show
-  #   @user = policy_scope(User).find(params[:id])
-  # end
+  def index
+    @users = policy_scope(User)
+    @mentors = @users.where(mentor: true) #retorna array de mentores
+  end
+
+  def show
+    @user = User.find(params[:id])
+    authorize @user
+  end
 
   # def edit
   #   authorize @user
