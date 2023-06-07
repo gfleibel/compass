@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="user-section col-4">
+    <div class="user-section-container">
+      <% if current_user.photo.key %>
+        <%= cl_image_tag current_user.photo.key%>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+      <% end %>
+      <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+      <div class="links">
+        <% if current_user.github %>
+          <%= link_to current_user.github do %>
+            <i class="fab fa-github" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+        <% if current_user.linkedin %>
+          <%= link_to current_user.linkedin do %>
+            <i class="fab fa-linkedin" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+        <% if current_user.personal_site %>
+          <%= link_to current_user.personal_site do%>
+            <i class="fa-solid fa-globe" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <h5>Sobre mim:</h5>
+      <p><%= current_user.about_me %></p>
+      <h5>Sobre a minha formação profissional:</h5>
+      <p><%= current_user.professional_about %></p>
+      <% if current_user.mentor == true %>
+        <h5>Sobre a minha transição de carreira</h5>
+      <% else %>
+        <h5>Motivação para a transição de carreira:</h5>
+      <% end %>
+      <p><%= current_user.transition_about %></p>
+    </div>
+  </div>
+
+  <div class="profiles-section col-8">
+    <% if current_user.mentor == true && @matches.present?%>
+      <h4>Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h4>
+    <% elsif current_user.mentor == false && @matches.present? %>
+      <h4>Seu <span style="color: rgb(205, 0, 0);">mentor</span></h4>
+    <% end %>
+    <div class="cards">
+      <% @matches.each do |match| %>
+        <% if current_user.mentor == true %>
+          <% user_match = User.find(match.mentee_id) %>
+        <% else %>
+          <% user_match = User.find(match.mentor_id) %>
+        <% end %>
+        <div class="card-category">
+          <div class="user-card-img">
+            <% if user_match.photo.key %>
+              <%= cl_image_tag user_match.photo.key%>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
+            <% end %>
+          </div>
+          <div class="card-info">
+            <h3><%= "#{user_match.first_name} #{user_match.last_name}" %></h3>
+            <p><%= user_match.field_of_work %></p>
+            <p><%= user_match.mentor_current_employer %></p>
+          </div>
+          <div class="user-card-footer">
+            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% if current_user.mentor == true && @pending_matches.present?%>
+      <h3>Suas <span style="color: rgb(205, 0, 0);">solicitações</span> de mentoria</h3>
+    <% elsif current_user.mentor == false && @pending_matches.present? %>
+      <h3>Aguardando a <span style="color: rgb(205, 0, 0);">aprovação </span>do mentor</h3>
+    <% end %>
+    <div class="cards">
+      <% @pending_matches.each do |match| %>
+        <% if current_user.mentor == true %>
+          <% user_match = User.find(match.mentee_id) %>
+        <% else %>
+          <% user_match = User.find(match.mentor_id) %>
+        <% end %>
+        <div class="card-category">
+          <div class="user-card-img">
+            <% if user_match.photo.key %>
+              <%= cl_image_tag user_match.photo.key%>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
+            <% end %>
+          </div>
+          <div class="card-info">
+            <h3><%= "#{user_match.first_name} #{user_match.last_name}" %></h3>
+            <p><%= user_match.field_of_work %></p>
+            <p><%= user_match.mentor_current_employer %></p>
+          </div>
+          <div class="user-card-footer">
+            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button" %>
+            <% if user_match.mentor == false %>
+              <%= simple_form_for match, url: profile_match_path(id: match.id), method: :patch do |f|%>
+                <%= f.input :matched, as: :hidden, input_html: { value: true } %>
+                <%= f.submit "Aceitar Solicitação", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

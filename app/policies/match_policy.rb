@@ -16,4 +16,8 @@ class MatchPolicy < ApplicationPolicy
   def destroy?
     record.match == user.match
   end
+
+  def update?
+    true
+  end
 end
