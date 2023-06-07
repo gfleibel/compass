@@ -1,54 +1,61 @@
-.profile-section {
+.user-section {
   width: 30%;
-  display: flex;
-  flex-direction: column;
-  margin: 24px;
 }
-.profile-section-container {
+.user-section-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 24px;
   justify-content: center;
   text-align: center;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  padding: 1em 3em;
+  margin-bottom: 2em;
 }
 
-.profile-section-container.sticky {
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.links{
+  display: flex;
+  gap: 1em;
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-bottom: 1em;
 }
 
-.profile-section {
+.user-section {
   img {
   border-radius: 50%;
   height: 280px;
   width: 280px;
   object-fit: cover;
-  padding: 50px;
+  padding: 30px;
   }
 }
 
-.profile-section {
-  h3 {
-  margin-top: 28px;
+.user-section {
+  h1 {
+    font-weight: bold;
+    font-size: 2em;
   }
 }
 
-.profile-section {
+.user-section {
+  h5 {
+    font-weight: bold;
+  }
+}
+
+.user-section {
   p {
-  margin-bottom: 28px;
+  margin-bottom: 1.5em;
   }
 }
 
-.users-section {
-  width: 70%;
-  margin: 24px;
-}
-
-.users-section {
-  h3 {
-  margin: 28px 28px;
+.profiles-section{
+  padding-top: 2em;
+  margin-bottom: 2em;
+  h4 {
+    margin-bottom: 2em;
   }
 }
