@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :mentor_matches, class_name: 'Match', foreign_key: 'mentor_id'
   has_many :mentee_matches, class_name: 'Match', foreign_key: 'mentee_id'
 
-  validates :first_name, :last_name, :email, :password, :country, :city, :state, :professional_field, :academic_degree, presence: true
+  validates :first_name, :last_name, :email, :country, :city, :state, :professional_field, :academic_degree, presence: true
 end
