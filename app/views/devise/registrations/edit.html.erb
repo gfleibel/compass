@@ -38,7 +38,9 @@
         <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :photo, label: "Foto", as: :file %>
-        <%= f.input :other_info, label: "Outras Informações", as: :text %>
+        <%= f.input :about_me, label: "Sobre mim", as: :text %>
+        <%= f.input :professional_about, label: "Formação profissional", as: :text %>
+        <%= f.input :transition_about, label: "Sobre a minha transição de carreira", as: :text %>
         <%= f.input :current_password,
                     label: "Insira a sua senha atual para confirmar as alterações",
                     required: true,
