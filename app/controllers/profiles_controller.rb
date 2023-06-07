@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @match = Match.new
     authorize @user
   end
 
