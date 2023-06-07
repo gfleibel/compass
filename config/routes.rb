@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :profiles do
-    resources :matches, only: %i[create destroy index]
+    resources :matches, only: %i[create destroy index update]
   end
 
   get "contato", to: "pages#contact", as: :contact
+  post "contato", to: "pages#contact_submit", as: :contact_submit
   get "recursos", to: "pages#resources", as: :resources
   get "codigo-de-conduta", to: "pages#conduct", as: :conduct
   get "users/signup/:type", to: "registration#new", as: :new_type

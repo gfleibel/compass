@@ -40,6 +40,13 @@
           <%= f.submit "Solicitar Mentoria", class: "btn button mt-2"  %>
         <% end %>
       <% end %>
+      <% if current_user.mentor == true %>
+        <%= link_to "Mentorados", profile_matches_path(current_user), class: "btn btn-primary" %>
+      <% elsif Match.exists?(mentee_id: current_user.id) %>
+        <%= link_to "Seu Mentor", profile_matches_path(current_user), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Encontre seu mentor!", profiles_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
 
   </div>
