@@ -8,17 +8,17 @@
       <% end %>
       <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
       <div class="links">
-        <% if current_user.github %>
+        <% if current_user.github.present? %>
           <%= link_to current_user.github do %>
             <i class="fab fa-github" style="color:rgb(205,0,0)"></i>
           <% end %>
         <% end %>
-        <% if current_user.linkedin %>
+        <% if current_user.linkedin.present? %>
           <%= link_to current_user.linkedin do %>
             <i class="fab fa-linkedin" style="color:rgb(205,0,0)"></i>
           <% end %>
         <% end %>
-        <% if current_user.personal_site %>
+        <% if current_user.personal_site.present? %>
           <%= link_to current_user.personal_site do%>
             <i class="fa-solid fa-globe" style="color:rgb(205,0,0)"></i>
           <% end %>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="profiles-section col-8">
-    <h4>Mentores sugeridos</h4>
+    <h3 class="mx-5 px-5">Esses são os <span style="color:rgb(205,0,0)">mentores</span> que podem te ajudar na sua transição de carreira. </h3>
     <div class="cards">
       <% @mentors.each do |mentor| %>
         <div class="card-category">
@@ -55,7 +55,7 @@
             <p><%= mentor.mentor_current_employer %></p>
           </div>
           <div class="user-card-footer">
-            <%= link_to "Acessar", profile_path(mentor.id), class: "btn button" %>
+            <%= link_to "Acessar", profile_path(mentor.id), class: "btn button mt-3" %>
           </div>
         </div>
       <% end %>
