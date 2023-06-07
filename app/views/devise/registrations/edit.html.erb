@@ -14,7 +14,7 @@
         <% end %>
 
         <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
+                    hint: "Deixe em branco caso não queira alterar a senha",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
@@ -26,11 +26,11 @@
         <%= f.input :state, label: "Estado", required: true, input_html: { autocomplete: 'address-level1', autocapitalize: 'characters' } %>
         <%= f.input :city, label: "Cidade", required: true, input_html: { autocomplete: 'address-level2', autocapitalize: 'words' } %>
         <%= f.input :professional_field, label: "Área Profissional", required: true, as: :select, collection: ["Tecnologia", "Saúde", "Educação", "Engenharias", "Ciências Exatas", "Música, Artes e Design", "Ciências Sociais",  "Comunicação e Informação", "Negócios", "Ciências Biológicas", "Direito", "Outros"], prompt: "Selecione uma área profissional" %>
-        <%= f.input :academic_degree, label: "Formação", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
+        <%= f.input :academic_degree, label: "Formação", hint: "Escreva o nome do curso no qual você se formou", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
         <%= f.input :field_of_work, label: "Campo de atuação", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
         <%= f.input :programming_language, label: "Principal Linguagem de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
-        <%= f.input :mentor, as: :hidden, input_html: { value: params[:type] == "mentor" ? true : false } %>
-        <% if params[:type] == "mentor" %>
+        <%= f.input :mentor, as: :hidden, input_html: { value: current_user.mentor == "mentor" ? true : false } %>
+        <% if current_user.mentor == "mentor" %>
           <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
           <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["0 a 1 ano", "2 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
           <% end %>
@@ -38,9 +38,13 @@
         <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :photo, label: "Foto", as: :file %>
-        <%= f.input :about_me, label: "Sobre mim", as: :text %>
-        <%= f.input :professional_about, label: "Formação profissional", as: :text %>
-        <%= f.input :transition_about, label: "Sobre a minha transição de carreira", as: :text %>
+        <%= f.input :about_me, label: "Conte um pouco sobre você", as: :text %>
+        <% if current_user.mentor == "mentor" %>
+          <%= f.input :professional_about, label: "Conte sobre sua vida profissional antes de trabalhar com tecnologia", as: :text %>
+        <% else %>
+          <%= f.input :professional_about, label: "Conte sobre sua vida profissional antes de decidir fazer a sua transição de carreira", as: :text %>
+        <% end %>
+        <%= f.input :transition_about, label: "Conte sobre sua transição de carreira", as: :text %>
         <%= f.input :current_password,
                     label: "Insira a sua senha atual para confirmar as alterações",
                     required: true,
@@ -48,11 +52,11 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Update", class: "btn button mb-5" %>
+        <%= f.button :submit, "Atualizar", class: "btn button mb-5" %>
       </div>
     <% end %>
     <div class="d-flex gap-3">
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Tem certeza?" }, method: :delete, class: "btn btn-secondary" %>
-      <%= link_to "Back", :back, class: "btn btn-secondary" %>
+      <%= button_to "Excluir conta", registration_path(resource_name), data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" }, method: :delete, class: "btn btn-secondary" %>
+      <%= link_to "Voltar", :back, class: "btn btn-secondary" %>
     </div>
   </div>

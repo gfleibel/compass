@@ -1,34 +1,47 @@
-<div class="container d-flex">
-  <div class="profile-section d-flex flex-column">
-    <div class="profile-section-container">
+<div class="row">
+  <div class="user-section col-4">
+    <div class="user-section-container">
       <% if current_user.photo.key %>
         <%= cl_image_tag current_user.photo.key%>
       <% else %>
         <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
       <% end %>
       <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
-      <% if current_user.github %>
-        <%= link_to "GitHub", current_user.github %>
+      <div class="links">
+        <% if current_user.github %>
+          <%= link_to current_user.github do %>
+            <i class="fab fa-github" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+        <% if current_user.linkedin %>
+          <%= link_to current_user.linkedin do %>
+            <i class="fab fa-linkedin" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+        <% if current_user.personal_site %>
+          <%= link_to current_user.personal_site do%>
+            <i class="fa-solid fa-globe" style="color:rgb(205,0,0)"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <h5>Sobre mim:</h5>
+      <p><%= current_user.about_me %></p>
+      <h5>Sobre a minha formação profissional:</h5>
+      <p><%= current_user.professional_about %></p>
+      <% if current_user.mentor == true %>
+        <h5>Sobre a minha transição de carreira</h5>
+      <% else %>
+        <h5>Motivação para a transição de carreira:</h5>
       <% end %>
-      <% if current_user.linkedin %>
-        <%= link_to "LinkedIn", current_user.linkedin %>
-      <% end %>
-      <% if current_user.personal_site %>
-        <%= link_to "Website Pessoal",current_user.personal_site %>
-      <% end %>
-      <h3>Sobre mim:</h3>
-      <p>Oi, sou Ezra Bridger, um jovem e habilidoso morador de Lothal. Cresci em um mundo dominado pelo Império Galáctico, onde tive que aprender a me virar por conta própria. Sou curioso e aventureiro.</p>
-      <h3>Formação Profissional:</h3>
-      <p>Como um jovem órfão, tive que aprender a me virar nas ruas de Lothal. Minhas habilidades de sobrevivência e agilidade me tornaram um excelente ladrão e piloto.</p>
-      <h3>Motivação para a transição de carreira:</h3>
-      <p>Motivado por minha curiosidade e desejo de fazer a diferença, decidi explorar a tecnologia como uma forma de desafiar o Império e ajudar os oprimidos. Estou determinado a usar meus talentos para lutar pela justiça e liberdade, contribuindo com minha expertise tecnológica à Rebelião. Que a Força esteja comigo nessa jornada para um futuro melhor.</p>
+      <p><%= current_user.transition_about %></p>
     </div>
   </div>
-  <div class="users-section">
-    <h3><span style="color: rgb(205, 0, 0);">Mentores</span> sugeridos</h3>
-    <div class="user-card-grid">
+
+  <div class="profiles-section col-8">
+    <h4>Mentores sugeridos</h4>
+    <div class="cards">
       <% @mentors.each do |mentor| %>
-        <div class="user-card">
+        <div class="card-category">
           <div class="user-card-img">
             <% if mentor.photo.key %>
               <%= cl_image_tag mentor.photo.key%>
@@ -36,15 +49,13 @@
               <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
             <% end %>
           </div>
-          <div class="user-card-header">
-            <div class="user-card-header-info">
-              <h3><%= "#{mentor.first_name} #{mentor.last_name}" %></h3>
-              <p><%= mentor.field_of_work %></p>
-              <p><%= mentor.mentor_current_employer %></p>
-            </div>
+          <div class="card-info">
+            <h3><%= "#{mentor.first_name} #{mentor.last_name}" %></h3>
+            <p><%= mentor.field_of_work %></p>
+            <p><%= mentor.mentor_current_employer %></p>
           </div>
           <div class="user-card-footer">
-            <%= link_to "Acessar", profile_path(mentor.id), class: "btn btn-danger text-light" %>
+            <%= link_to "Acessar", profile_path(mentor.id), class: "btn button" %>
           </div>
         </div>
       <% end %>
