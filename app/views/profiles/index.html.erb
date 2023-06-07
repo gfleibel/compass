@@ -1,6 +1,6 @@
 <div class="container d-flex">
   <div class="profile-section d-flex flex-column">
-    <div class="profile-section-container" data-controller="sticky" data-target="sticky.container">
+    <div class="profile-section-container">
       <% if current_user.photo.key %>
         <%= cl_image_tag current_user.photo.key%>
       <% else %>
