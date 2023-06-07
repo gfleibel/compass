@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
   def current_user
-    user = User.find(params[:user][:mentee_id])
+    User.find(params[:user][:mentee_id])
   end
   def welcome_mentor
     @user = User.find(params[:user][:mentor_id]) # Instance variable => available in view
