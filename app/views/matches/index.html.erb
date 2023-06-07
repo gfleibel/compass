@@ -96,7 +96,7 @@
             <p><%= user_match.mentor_current_employer %></p>
           </div>
           <div class="user-card-footer">
-            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button" %>
+            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button mt-3" %>
             <% if user_match.mentor == false %>
               <%= simple_form_for match, url: profile_match_path(id: match.id), method: :patch do |f|%>
                 <%= f.input :matched, as: :hidden, input_html: { value: true } %>

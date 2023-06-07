@@ -35,18 +35,19 @@
     </div>
 
     <div class="pt-5">
-      <% if current_user.mentor == false && Match.find_by(mentee_id: current_user.id).nil? %>
+      <% if current_user.mentor == false && Match.find_by(mentee_id: current_user.id).nil? && current_user.id != @user.id %>
         <%= simple_form_for @match, url: profile_matches_path(@user), method: :post do |f|%>
           <%= f.submit "Solicitar Mentoria", class: "btn button mt-2"  %>
         <% end %>
       <% end %>
       <% if current_user.mentor == true %>
-        <%= link_to "Mentorados", profile_matches_path(current_user), class: "btn btn-primary" %>
-      <% elsif Match.exists?(mentee_id: current_user.id) %>
-        <%= link_to "Seu Mentor", profile_matches_path(current_user), class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to "Encontre seu mentor!", profiles_path, class: "btn btn-primary" %>
+        <%= link_to "Mentorados", profile_matches_path(current_user), class: "btn button" %>
+      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id == @user.id%>
+        <%= link_to "Seu Mentor", profile_matches_path(current_user), class: "btn button" %>
+      <% elsif Match.find_by(mentee_id: current_user.id).nil? && current_user.id == @user.id%>
+        <%= link_to "Encontre seu mentor", profiles_path, class: "btn button" %>
       <% end %>
+      <%= link_to "Voltar", profile_matches_path(@user), class: "btn btn-secondary" %>
     </div>
 
   </div>

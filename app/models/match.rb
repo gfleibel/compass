@@ -9,10 +9,7 @@ class Match < ApplicationRecord
   private
 
   def send_welcome_email
-    if self.mentor == true
-      UserMailer.with(user: self).welcome_mentor.deliver_now
-    else
-      UserMailer.with(user: self).welcome_mentee.deliver_now
-    end
+    UserMailer.with(user: self.mentor_id).welcome_mentor.deliver_now
+    UserMailer.with(user: self.mentee_id).welcome_mentee.deliver_now
   end
 end
