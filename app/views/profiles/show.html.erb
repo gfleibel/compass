@@ -1,29 +1,11 @@
-<% if @user.mentor %>
-  <h1><%= "#{mentor.first_name} #{mentor.last_name}" %></h1>
-<% else %>
-  <h1><%= "#{mentee.first_name} #{mentee.last_name}" %></h1>
-<% end %>
 
-
+ <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
 <h2>Sobre mim:</h2>
-<p><% if @user.mentor %>
-  <h1><%= "#{mentor.first_name} #{mentor.last_name}" %></h1>
-<% else %>
-  <h1><%= "#{mentee.first_name} #{mentee.last_name}" %></h1>
-<% end %></p>
+<p><%= @user.professional_about %></p>
 
 <h2>Formação profissional:</h2>
-<p><% if @user.mentor %>
-  <h1><%= "#{mentor.first_name} #{mentor.last_name}" %></h1>
-<% else %>
-  <h1><%= "#{mentee.first_name} #{mentee.last_name}" %></h1>
-<% end %></p>
+<p><%= @user.about_me %></p>
 
 <h2>Motivação para a transição de carreira:</h2>
-<p><% if @user.mentor %>
-  <h1><%= "#{mentor.first_name} #{mentor.last_name}" %></h1>
-<% else %>
-  <h1><%= "#{mentee.first_name} #{mentee.last_name}" %></h1>
-<% end %></p>
-
+<p><%= @user.transition_about %></p>
