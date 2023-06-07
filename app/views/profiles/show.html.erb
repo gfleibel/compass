@@ -1,1 +1,6 @@
 <h1>Show User</h1>
+
+
+<%= simple_form_for @match, url: profile_matches_path(@user), method: :post do |f|%>
+  <%= f.submit "Solicitar Mentoria", class: "btn btn-primary" %>
+<% end %>

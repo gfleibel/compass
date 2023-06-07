@@ -84,3 +84,5 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem 'unsplash'
 gem 'faker'
+
+gem 'letter_opener', group: :development
