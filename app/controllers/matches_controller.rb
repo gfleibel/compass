@@ -35,6 +35,12 @@ class MatchesController < ApplicationController
     end
   end
 
+  def update
+    authorize @match
+    @match.update(match_params)
+    redirect_to profile_matches_path(@match)
+  end
+
   def destroy
     authorize @match
     @match.destroy
@@ -48,6 +54,6 @@ class MatchesController < ApplicationController
   end
 
   def set_match
-    Match.find(params[:id])
+    @match = Match.find(params[:id])
   end
 end
