@@ -349,6 +349,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.5)
   redis (~> 5.0)
+  redis-client (~> 0.14.1)
   sassc-rails
   selenium-webdriver
   sidekiq
