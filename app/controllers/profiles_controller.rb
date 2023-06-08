@@ -9,6 +9,11 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @match = Match.new
+    if current_user.mentor?
+      @matched = Match.where(mentor_id: current_user.id, mentee_id: @user.id, matched: true).first
+    else
+      @matched = Match.where(mentor_id: @user.id, mentee_id: current_user.id, matched: true).first
+    end
     authorize @user
   end
 

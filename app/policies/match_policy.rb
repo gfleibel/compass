@@ -14,7 +14,7 @@ class MatchPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.match == user.match
+    record.mentor_id == user.id || record.mentee_id == user.id
   end
 
   def update?

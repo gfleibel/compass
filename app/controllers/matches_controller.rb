@@ -42,9 +42,11 @@ class MatchesController < ApplicationController
   end
 
   def destroy
+    @user = policy_scope(User)
+    @user = current_user
     authorize @match
     @match.destroy
-    redirect_to users_path, notice: 'Mentoria removida com sucesso.', status: :see_other
+    redirect_to profile_path(@user), status: :see_other
   end
 
   private
