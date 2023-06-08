@@ -82,8 +82,8 @@
         <% else %>
           <% user_match = User.find(match.mentor_id) %>
         <% end %>
-        <div class="card-category">
-          <div class="user-card-img">
+        <div class="card-category px-4">
+          <div class="user-card-img mt-4">
             <% if user_match.photo.key %>
               <%= cl_image_tag user_match.photo.key%>
             <% else %>
@@ -91,17 +91,18 @@
             <% end %>
           </div>
           <div class="card-info">
-            <h3><%= "#{user_match.first_name} #{user_match.last_name}" %></h3>
+            <h3 class="mt-4"><%= "#{user_match.first_name} #{user_match.last_name}" %></h3>
             <p><%= user_match.field_of_work %></p>
             <p><%= user_match.mentor_current_employer %></p>
           </div>
-          <div class="user-card-footer d-flex gap-2">
-            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button mt-3" %>
+            <%= link_to "Acessar", profile_path(user_match.id), class: "btn btn-secondary mt-3" %>
+          <div class="user-card-footer d-flex gap-2 m-0">
             <% if user_match.mentor == false %>
               <%= simple_form_for match, url: profile_match_path(id: match.id), method: :patch do |f|%>
                 <%= f.input :matched, as: :hidden, input_html: { value: true } %>
-                <%= f.submit "Aceitar Solicitação", class: "btn btn-primary" %>
+                <%= f.submit "Aceitar", class: "btn btn-success text-light" %>
               <% end %>
+              <%= link_to "Recusar", profile_match_path(id: match.id), data: {turbo_method: :delete, turbo_confirm: 'Você tem certeza que deseja recusar a solicitação?'}, class: "btn btn-danger text-light mt-3"%>
             <% end %>
           </div>
         </div>
