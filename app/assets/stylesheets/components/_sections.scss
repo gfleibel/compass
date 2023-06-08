@@ -1,5 +1,43 @@
 .user-section {
   width: 30%;
+  p {
+    margin-bottom: 1.5em;
+  }
+  h5 {
+    font-weight: bold;
+  }
+  h1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+  img {
+  border-radius: 50%;
+  height: 280px;
+  width: 280px;
+  object-fit: cover;
+  padding: 30px;
+  }
+}
+
+.profile-user-section {
+  p {
+    margin-bottom: 1.5em;
+  }
+  h5 {
+    font-weight: bold;
+  }
+  h1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+  img {
+  border-radius: 50%;
+  height: 280px;
+  width: 280px;
+  object-fit: cover;
+  padding: 30px;
+  margin-right: 2em;
+  }
 }
 .user-section-container {
   display: flex;
@@ -21,35 +59,6 @@
   font-size: 1.5em;
   text-decoration: none;
   margin-bottom: 1em;
-}
-
-.user-section {
-  img {
-  border-radius: 50%;
-  height: 280px;
-  width: 280px;
-  object-fit: cover;
-  padding: 30px;
-  }
-}
-
-.user-section {
-  h1 {
-    font-weight: bold;
-    font-size: 2em;
-  }
-}
-
-.user-section {
-  h5 {
-    font-weight: bold;
-  }
-}
-
-.user-section {
-  p {
-  margin-bottom: 1.5em;
-  }
 }
 
 .profiles-section{
