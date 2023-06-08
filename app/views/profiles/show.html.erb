@@ -2,7 +2,11 @@
 
   <div class="d-flex align-items-center">
     <div class="user-section">
-      <%= cl_image_tag @user.photo.key%>
+      <% if @user.photo.key %>
+        <%= cl_image_tag @user.photo.key%>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
+      <% end %>
     </div>
 
     <div>
