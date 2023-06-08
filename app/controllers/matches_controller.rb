@@ -38,6 +38,8 @@ class MatchesController < ApplicationController
   def update
     authorize @match
     @match.update(match_params)
+    UserMailer.with(user: @match.mentor_id, mentee: @match.mentee_id).confirmation_mentor.deliver_now
+    UserMailer.with(user: @match.mentee_id, mentor: @match.mentor_id).confirmation_mentee.deliver_now
     redirect_to profile_matches_path(@match)
   end
 
