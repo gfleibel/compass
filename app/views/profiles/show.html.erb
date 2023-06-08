@@ -7,7 +7,8 @@
 
     <div>
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <h2><%= @user.mentor_current_employer if @user.mentor_current_employer.present? %> <%= @user.field_of_work %></h2>
+      <h5><%= @user.mentor_current_employer if @user.mentor_current_employer.present? %> | <%= @user.field_of_work %></h5>
+      <h6><%= @user.city %> | <%= @user.state %> | <%= @user.country %></h6>
       <div class="links">
         <%= link_to current_user.github, target:"_blank" do %>
               <i class="fab fa-github" style="color:rgb(205,0,0)"></i>
@@ -24,18 +25,26 @@
 
   <div>
     <div class="pb-4 border-top">
-      <h2 class="pt-5">Sobre mim:</h2>
+      <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Sobre</span> mim:</h2>
       <p><%= @user.about_me %></p>
 
-      <h2 class="pt-5">Formação profissional:</h2>
+      <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Formação</span> profissional:</h2>
+      <h4><%= @user.academic_degree %></h4>
       <p><%= @user.professional_about %></p>
 
       <% if @user.mentor == false %>
-        <h2 class="pt-5">Motivação para a transição de carreira:</h2>
+        <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Motivação</span> para a transição de carreira:</h2>
       <% else %>
-        <h2 class="pt-5">Sobre a minha transição de carreira:</h2>
+        <h2 class="pt-5">Sobre a minha <span class="fw-bold" style="color: rgb(205, 0, 0);">transição</span> de carreira:</h2>
       <% end %>
+
       <p><%= @user.transition_about %></p>
+      <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Linguagens</span> que conheço:</h2>
+      <p><%= @user.programming_language %></p>
+
+      <h2 class="pt-5">Anos de <span class="fw-bold" style="color: rgb(205, 0, 0);">experiência:</span></h2>
+      <p><%= @user.years_of_experience %></p>
+
     </div>
 
     <div class="pt-5">
