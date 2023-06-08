@@ -103,6 +103,12 @@
   font-weight: bold;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(173, 173, 173, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 1.1rem #d9dde1;
 }
 
 .card-info{
