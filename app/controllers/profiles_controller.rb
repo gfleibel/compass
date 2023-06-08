@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
     if current_user.mentor?
       @matched = Match.where(mentor_id: current_user.id, mentee_id: @user.id).first
-      @matched.nil? ? redirect_to_root : @matched
+      @matched.nil? && current_user != @user ? redirect_to_root : @matched
     else
       @matched = Match.where(mentor_id: @user.id, mentee_id: current_user.id).first
     end
