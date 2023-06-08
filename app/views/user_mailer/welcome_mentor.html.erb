@@ -1,6 +1,13 @@
-<p>Hi <%= User.find(params[:user][:mentor_id]).email %>,</p>
+<p>Oi, <%= @user.first_name %>!</p>
 
-<h1>Mentor</h1>
-<p>Today we'll talk about SMTP and Postmark!</p>
+<p>Recebemos um pedido de mentoria de uma pessoa em nossa plataforma, que selecionou você como mentor(a) voluntário(a) para ajudá-la em sua transição de carreira.</p>
 
-<p>See ya!</p>
+<p>A pessoa, <%= @mentee.first_name %>, compartilhou informações sobre sua situação atual, objetivos de carreira e áreas de interesse específicas. Acreditamos que sua experiência e conhecimento são adequados para apoiá-la.</p>
+
+<p>Gostaríamos de confirmar sua disponibilidade e interesse em assumir o papel de mentor(a) para essa pessoa. Se você estiver disponível e interessado(a) em orientá-la, por favor, acesse a plataforma e aceite o pedido de mentoria.</p>
+
+<p>Agradecemos antecipadamente pelo seu comprometimento em compartilhar seus conhecimentos e experiência como mentor(a) voluntário(a). Sua contribuição fará a diferença na jornada profissional dessa pessoa.</p>
+
+<p>Um abraço,</p>
+
+<p>Compass</p>
