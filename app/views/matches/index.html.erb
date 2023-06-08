@@ -39,9 +39,9 @@
 
   <div class="profiles-section col-8">
     <% if current_user.mentor == true && @matches.present?%>
-      <h4>Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h4>
+      <h4 class="fw-bold">Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h4>
     <% elsif current_user.mentor == false && @matches.present? %>
-      <h4>Seu <span style="color: rgb(205, 0, 0);">mentor</span></h4>
+      <h4 class="fw-bold">Seu <span style="color: rgb(205, 0, 0);">mentor</span></h4>
     <% end %>
     <div class="cards">
       <% @matches.each do |match| %>
@@ -64,7 +64,7 @@
             <p><%= user_match.mentor_current_employer %></p>
           </div>
           <div class="user-card-footer">
-            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button" %>
+            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button mt-3" %>
           </div>
         </div>
       <% end %>
@@ -95,7 +95,7 @@
             <p><%= user_match.field_of_work %></p>
             <p><%= user_match.mentor_current_employer %></p>
           </div>
-          <div class="user-card-footer">
+          <div class="user-card-footer d-flex gap-2">
             <%= link_to "Acessar", profile_path(user_match.id), class: "btn button mt-3" %>
             <% if user_match.mentor == false %>
               <%= simple_form_for match, url: profile_match_path(id: match.id), method: :patch do |f|%>

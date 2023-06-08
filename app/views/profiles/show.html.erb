@@ -25,27 +25,36 @@
   <div>
     <div class="pb-4 border-top">
       <h2 class="pt-5">Sobre mim:</h2>
-      <p><%= @user.professional_about %></p>
-
-      <h2 class="pt-5">Formação profissional:</h2>
       <p><%= @user.about_me %></p>
 
-      <h2 class="pt-5">Motivação para a transição de carreira:</h2>
+      <h2 class="pt-5">Formação profissional:</h2>
+      <p><%= @user.professional_about %></p>
+
+      <% if @user.mentor == false %>
+        <h2 class="pt-5">Motivação para a transição de carreira:</h2>
+      <% else %>
+        <h2 class="pt-5">Sobre a minha transição de carreira:</h2>
+      <% end %>
       <p><%= @user.transition_about %></p>
     </div>
 
     <div class="pt-5">
-      <% if current_user.mentor == false && Match.find_by(mentee_id: current_user.id).nil? && current_user.id != @user.id %>
+      <div class="d-flex gap-2 mt-2">
+      <% if current_user.mentor == false && Match.find_by(mentee_id: current_user.id).nil? && current_user.id != @user.id%>
         <%= simple_form_for @match, url: profile_matches_path(@user), method: :post do |f|%>
-          <%= f.submit "Solicitar Mentoria", class: "btn button mt-2"  %>
+          <%= f.submit "Solicitar Mentoria", class: "btn button"  %>
         <% end %>
+        <%= link_to "Voltar", profiles_path, class: "btn btn-secondary" %>
       <% end %>
-      <% if current_user.mentor == true %>
-        <%= link_to "Mentorados", profile_matches_path(current_user), class: "btn button" %>
-      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id == @user.id%>
-        <%= link_to "Seu Mentor", profile_matches_path(current_user), class: "btn button" %>
-      <% elsif Match.find_by(mentee_id: current_user.id).nil? && current_user.id == @user.id%>
-        <%= link_to "Encontre seu mentor", profiles_path, class: "btn button" %>
+      </div>
+      <% if current_user.mentor == true && current_user.id == @user.id %>
+        <%= link_to "Seus mentorados", profile_matches_path(current_user), class: "btn btn-secondary" %>
+      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id == @user.id %>
+        <%= link_to "Seu mentor", profile_matches_path(current_user), class: "btn button" %>
+      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id != @user.id || current_user.mentor == true && current_user.id != @user.id  %>
+      <%= link_to "Voltar", profile_matches_path(current_user), class: "btn btn-secondary" %>
+      <% elsif current_user.id == @user.id%>
+        <%= link_to "Encontre seu mentor!", profiles_path, class: "btn button" %>
       <% end %>
       <%= link_to "Voltar", profile_matches_path(@user), class: "btn btn-secondary" %>
     </div>

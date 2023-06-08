@@ -15,9 +15,11 @@
 
         <%= f.input :password,
                     hint: "Deixe em branco caso não queira alterar a senha",
+                    label: "Senha",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
+                    label: "Confirme a senha",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :first_name, label: "Nome", required: true, input_html: { autocomplete: 'given-name', autocapitalize: 'words' } %>
@@ -27,19 +29,24 @@
         <%= f.input :city, label: "Cidade", required: true, input_html: { autocomplete: 'address-level2', autocapitalize: 'words' } %>
         <%= f.input :professional_field, label: "Área Profissional", required: true, as: :select, collection: ["Tecnologia", "Saúde", "Educação", "Engenharias", "Ciências Exatas", "Música, Artes e Design", "Ciências Sociais",  "Comunicação e Informação", "Negócios", "Ciências Biológicas", "Direito", "Outros"], prompt: "Selecione uma área profissional" %>
         <%= f.input :academic_degree, label: "Formação", hint: "Escreva o nome do curso no qual você se formou", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
-        <%= f.input :field_of_work, label: "Campo de atuação", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
-        <%= f.input :programming_language, label: "Principal Linguagem de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
-        <%= f.input :mentor, as: :hidden, input_html: { value: current_user.mentor == "mentor" ? true : false } %>
-        <% if current_user.mentor == "mentor" %>
+        <% if current_user.mentor == true %>
+          <%= f.input :field_of_work, label: "Campo/Stack de atuação", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
+          <%= f.input :programming_language, label: "Principal Linguagem de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
+        <% else %>
+          <%= f.input :field_of_work, label: "Área/Stack de interesse", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
+          <%= f.input :programming_language, label: "Você já conhece alguma linguagem de programação?", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
+        <% end %>
+        <%= f.input :mentor, as: :hidden%>
+        <% if current_user.mentor == true %>
           <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
           <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["0 a 1 ano", "2 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
-          <% end %>
+        <% end %>
         <%= f.input :github, label: "GitHub", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :photo, label: "Foto", as: :file %>
         <%= f.input :about_me, label: "Conte um pouco sobre você", as: :text %>
-        <% if current_user.mentor == "mentor" %>
+        <% if current_user.mentor == true %>
           <%= f.input :professional_about, label: "Conte sobre sua vida profissional antes de trabalhar com tecnologia", as: :text %>
         <% else %>
           <%= f.input :professional_about, label: "Conte sobre sua vida profissional antes de decidir fazer a sua transição de carreira", as: :text %>
