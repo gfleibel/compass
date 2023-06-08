@@ -86,3 +86,6 @@ gem 'unsplash'
 gem 'faker'
 
 gem 'letter_opener', group: :development
+
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
