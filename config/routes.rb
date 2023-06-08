@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  
+
   resources :profiles do
     resources :matches, only: %i[create destroy index update]
   end
