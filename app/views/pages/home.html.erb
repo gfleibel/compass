@@ -1,53 +1,57 @@
 <div class="banner" style="background-image: linear-gradient(rgba(255,0,0,0.7),rgba(255,0,0,0.1)), url(https://res.cloudinary.com/duomnddyc/image/upload/v1686074040/loginpichor.png);">
-  <div class="container">
-    <h1>C<span><i class="fa-regular fa-compass" style="color: #ffffff;"></i></span>MPASS</h1>
-    <p>Encontre seu verdadeiro norte</p>
-  </div>
+
+  <h1>C<span><i class="fa-regular fa-compass" style="color: #ffffff;"></i></span>MPASS</h1>
+  <p>Encontre seu verdadeiro norte</p>
+
 </div>
 
 <div class="container p-5">
-
-  <div class="d-flex flex-column align-items-center">
-    <div class="w-75 text-center mb-4">
-      <h3>Bem-vindo à Compass! A plataforma que conecta pessoas em transição de carreira para a área de tecnologia com mentores voluntários.</h4>
-    </div>
-    <%= image_tag("https://res.cloudinary.com/duomnddyc/image/upload/v1686074039/trail.png", class: "trail mb-4") %>
-  </div>
-
-  <div class="card">
-    <h3>Conheça mais sobre a Compass</h3>
-    <p>Nossa plataforma é um espaço online que conecta profissionais em transição de carreira para a área de tecnologia com mentores voluntários especializados. Esses mentores, que passaram pelo mesmo processo de transição, oferecem orientação personalizada, compartilhando suas experiências e conhecimentos para ajudar os profissionais a navegarem com sucesso nessa jornada desafiadora. Eles fornecem suporte, conselhos práticos e insights valiosos, criando uma conexão única entre mentor e mentee. Junte-se a nós e aproveite a oportunidade de ter um mentor experiente ao seu lado para ajudá-lo a alcançar seus objetivos na área de tecnologia.</p>
-  </div>
-
-  <div class="row p-0 m-0 gap-2">
-    <div class="card-md col d-flex flex-column justify-content-between">
-      <div>
-        <h3><span style="color: rgb(205, 0, 0);">Receba</span> uma mentoria</h3>
-        <p>Você receberá orientação e suporte gratuitos para atravessar esse processo desafiador através de sessões de mentoria com profissionais experientes que já passaram pelo mesmo caminho. Nossos mentores estarão ao seu lado, compartilhando seus conhecimentos e oferecendo insights valiosos para ajudá-lo a alcançar seus objetivos na transição de carreira para a área de tecnologia.</p>
+  <div class="col-12 col-lg-12">
+    <div class="d-flex flex-column align-items-center">
+      <div class="w-75 text-center mb-4">
+        <h3>Bem-vindo à Compass! A plataforma que conecta pessoas em transição de carreira para a área de tecnologia com mentores voluntários.</h4>
       </div>
-      <div>
-        <%= link_to "Cadastrar", new_user_registration_path, class: "btn button mt-2" %>
-      </div>
+      <%= image_tag("https://res.cloudinary.com/duomnddyc/image/upload/v1686074039/trail.png", class: "trail mb-4") %>
     </div>
 
-    <div class="card-md col d-flex flex-column justify-content-between">
-      <div>
-        <h3><span style="color: rgb(205, 0, 0);">Seja </span>um mentor</h3>
-        <p>Seja um mentor voluntário e compartilhe seu conhecimento e experiência. Você fará a diferença na vida de profissionais em transição de carreira, guiando-os rumo à área de tecnologia. Sendo um mentor, você também aprimora suas habilidades de liderança e expande sua rede profissional. Junte-se a nós e experimente o poder transformador de ser um mentor voluntário.</p>
-      </div>
-      <div>
-        <%= link_to "Cadastrar", new_user_registration_path(params: { type: "mentor" }), class: "btn button" %>
-      </div>
+    <div class="card">
+      <h3>Conheça mais sobre a Compass</h3>
+      <p>Nossa plataforma é um espaço online que conecta profissionais em transição de carreira para a área de tecnologia com mentores voluntários especializados. Esses mentores, que passaram pelo mesmo processo de transição, oferecem orientação personalizada, compartilhando suas experiências e conhecimentos para ajudar os profissionais a navegarem com sucesso nessa jornada desafiadora. Eles fornecem suporte, conselhos práticos e insights valiosos, criando uma conexão única entre mentor e mentee. Junte-se a nós e aproveite a oportunidade de ter um mentor experiente ao seu lado para ajudá-lo a alcançar seus objetivos na área de tecnologia.</p>
     </div>
-  </div>
 
-  <div class="card d-flex flex-column justify-content-between">
-    <div>
-      <h3>O que esperamos de você?</h3>
-      <p>Convidamos você a acessar nosso Código de Conduta, que estabelece diretrizes claras para promover um ambiente colaborativo, inclusivo e respeitoso, onde todos possam se sentir valorizados e seguros.</p>
+    <div class="row p-0 m-0">
+      <div class="col-12 col-lg-6 p-0">
+        <div class="card-md d-flex flex-column justify-content-between">
+          <div>
+            <h3><span style="color: rgb(205, 0, 0);">Receba</span> uma mentoria</h3>
+            <p>Você receberá orientação e suporte gratuitos para atravessar esse processo desafiador através de sessões de mentoria com profissionais experientes que já passaram pelo mesmo caminho. Nossos mentores estarão ao seu lado, compartilhando seus conhecimentos e oferecendo insights valiosos para ajudá-lo a alcançar seus objetivos na transição de carreira para a área de tecnologia.</p>
+          </div>
+          <div>
+            <%= link_to "Cadastrar", new_user_registration_path, class: "btn button mt-2" %>
+          </div>
+        </div>
+        </div>
+        <div class="col-12 col-lg-6 p-0">
+        <div class="card-md d-flex flex-column justify-content-between">
+          <div>
+            <h3><span style="color: rgb(205, 0, 0);">Seja </span>um mentor</h3>
+            <p>Seja um mentor voluntário e compartilhe seu conhecimento e experiência. Você fará a diferença na vida de profissionais em transição de carreira, guiando-os rumo à área de tecnologia. Sendo um mentor, você também aprimora suas habilidades de liderança e expande sua rede profissional. Junte-se a nós e experimente o poder transformador de ser um mentor voluntário.</p>
+          </div>
+          <div>
+            <%= link_to "Cadastrar", new_user_registration_path(params: { type: "mentor" }), class: "btn button" %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <%= link_to "Acessar", conduct_path, class: "btn button mt-2" %>
+
+    <div class="card d-flex flex-column justify-content-between">
+      <div>
+        <h3>O que esperamos de você?</h3>
+        <p>Convidamos você a acessar nosso Código de Conduta, que estabelece diretrizes claras para promover um ambiente colaborativo, inclusivo e respeitoso, onde todos possam se sentir valorizados e seguros.</p>
+      </div>
+      <div>
+        <%= link_to "Acessar", conduct_path, class: "btn button mt-2" %>
+      </div>
     </div>
   </div>
 </div>
