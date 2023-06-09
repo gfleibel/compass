@@ -40,9 +40,11 @@
       <p><%= @user.about_me %></p>
 
       <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Formação</span> profissional:</h2>
-      <h5><span class="badge rounded-pill bg-secondary"><%= @user.academic_degree %></h5>
+      <div class="d-flex gap-2">
+        <h5><span class="badge rounded-pill bg-secondary"><%= @user.professional_field %></h5>
+        <h5><span class="badge rounded-pill bg-secondary"><%= @user.academic_degree %></h5>
+      </div>
       <p><%= @user.professional_about %></p>
-
       <% if @user.mentor == false %>
         <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Motivação</span> para a transição de carreira:</h2>
       <% else %>
