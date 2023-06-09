@@ -39,9 +39,9 @@
 
   <div class="profiles-section col-8">
     <% if current_user.mentor == true && @matches.present?%>
-      <h4 class="fw-bold">Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h4>
+      <h3 class="fw-bold">Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h3>
     <% elsif current_user.mentor == false && @matches.present? %>
-      <h4 class="fw-bold">Seu <span style="color: rgb(205, 0, 0);">mentor</span></h4>
+      <h3 class="fw-bold">Seu <span style="color: rgb(205, 0, 0);">mentor</span></h3>
     <% end %>
     <div class="cards">
       <% @matches.each do |match| %>
@@ -71,9 +71,11 @@
     </div>
 
     <% if current_user.mentor == true && @pending_matches.present?%>
-      <h3>Suas <span style="color: rgb(205, 0, 0);">solicitações</span> de mentoria</h3>
+      <h3>Suas <span style="color: rgb(205, 0, 0);">solicitações</span> de mentoria.</h3>
+    <% elsif current_user.mentor == true && @pending_matches.empty?%>
+      <h3 class="mt-5 pt-5">Nenhuma <span style="color: rgb(205, 0, 0);">solicitação</span> de mentoria.</h3>
     <% elsif current_user.mentor == false && @pending_matches.present? %>
-      <h3>Aguardando a <span style="color: rgb(205, 0, 0);">aprovação </span>do mentor</h3>
+      <h3>Aguardando a <span style="color: rgb(205, 0, 0);">aprovação </span>do mentor.</h3>
     <% end %>
     <div class="cards">
       <% @pending_matches.each do |match| %>
