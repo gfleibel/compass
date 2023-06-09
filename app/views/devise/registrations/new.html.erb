@@ -29,7 +29,7 @@
         <%= f.input :mentor, as: :hidden, input_html: { value: params[:type] == "mentor" ? true : false } %>
         <% if params[:type] == "mentor" %>
           <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
-          <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["0 a 1 ano", "2 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
+          <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["Menos de 1 ano", "1 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
           <% end %>
 
         <%= f.input :github, label: "GitHub Username", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu usuário do GitHub" } %>
