@@ -268,11 +268,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.1.1)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.14.0)
+    sidekiq (6.5.5)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.5.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
     snaky_hash (2.0.1)
@@ -348,11 +347,10 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit
   rails (~> 7.0.5)
-  redis (~> 5.0)
-  redis-client (~> 0.14.1)
+  redis
   sassc-rails
   selenium-webdriver
-  sidekiq
+  sidekiq (~> 6.0)
   sidekiq-failures (~> 1.0)
   simple_form!
   sprockets-rails

@@ -28,9 +28,9 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.0"
+gem "redis"
 
-gem "redis-client", "~> 0.14.1"
+# gem "redis-client", "~> 0.14.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -89,5 +89,5 @@ gem 'faker'
 
 gem 'letter_opener', group: :development
 
-gem "sidekiq"
+gem "sidekiq", "~> 6.0"
 gem "sidekiq-failures", "~> 1.0"
