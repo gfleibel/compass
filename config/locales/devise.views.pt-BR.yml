@@ -43,7 +43,7 @@ pt-BR:
       signed_up_but_locked: "Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada."
       signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta."
       update_needs_confirmation: "Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, clique no link de confirmação para finalizar confirmando o seu novo e-mail."
-      updated: "Senha alterada com sucesso."
+      updated: "Dados alterados com sucesso."
       updated_but_not_signed_in: "Sua conta foi atualizada com sucesso, uma vez que sua senha foi alterada será necessário realizar o login novamente."
     sessions:
       signed_in: "Login efetuado com sucesso."
