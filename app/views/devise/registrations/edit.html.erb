@@ -41,9 +41,8 @@
           <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
           <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["Menos de 1 ano", "1 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
         <% end %>
-        <%= f.input :github, label: "GitHub", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
-        <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
-        <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
+ <%= f.input :github, label: "GitHub Username", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu usuário do GitHub" } %>
+        <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu perfil do LinkedIn"}, hint: 'https://www.linkedin.com/in/seu-usuario/'  %>        <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :photo, label: "Foto", as: :file %>
         <%= f.input :about_me, label: "Conte um pouco sobre você", as: :text %>
         <% if current_user.mentor == true %>
