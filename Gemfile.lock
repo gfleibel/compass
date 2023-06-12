@@ -341,6 +341,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
+  httparty
   jbuilder
   jsbundling-rails
   letter_opener
