@@ -12,6 +12,9 @@
 @import "components/index";
 @import "pages/index";
 
+// Tom Select
+@import "tom-select/dist/scss/tom-select";
+
 body {
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_152919) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_165035) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_152919) do
     t.index ["mentor_id"], name: "index_matches_on_mentor_id"
   end
 
+  create_table "programming_languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "programming_languages_options", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_152919) do
     t.string "city"
     t.string "professional_field"
     t.string "academic_degree"
-    t.string "programming_language"
+    t.string "programming_language", default: [], array: true
     t.string "mentor_current_employer"
     t.text "transition_description"
     t.string "years_of_experience"
@@ -84,6 +96,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_152919) do
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_programming_languages", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "programming_language_id", null: false
+    t.index ["programming_language_id", "user_id"], name: "index_programming_languages_users"
+    t.index ["user_id", "programming_language_id"], name: "index_users_programming_languages"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
