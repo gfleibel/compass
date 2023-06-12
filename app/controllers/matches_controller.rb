@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
     end
     @matches = all_matches.where(matched: true)
     @pending_matches = all_matches.where(matched: false)
+    asyn_update
   end
 
   def show
@@ -59,5 +60,11 @@ class MatchesController < ApplicationController
 
   def set_match
     @match = Match.find(params[:id])
+  end
+
+  def asyn_update
+    @pending_matches.each do |match|
+      MatchTimeJob.perform_now(match)
+    end
   end
 end
