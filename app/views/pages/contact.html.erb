@@ -1,6 +1,5 @@
 <div class="signin-background">
   <div class="card-login col-6">
-
     <h3>Fale conosco</h3>
     <%= form_with url: contact_submit_path, method: :post do |form| %>
       <%= form.label :name, "Nome:", class: "form-label mt-4" %>
@@ -12,9 +11,13 @@
       <%= form.label :message, "Mensagem:", class: "form-label" %>
       <%= form.text_area :message, class: "form-input" %>
 
+      <!-- Adicione o reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey=RECAPTCHA_PUBLIC_KEY></div>
+
       <%= form.submit "Enviar", class: "btn button mt-4" %>
     <% end %>
-
-
   </div>
 </div>
+
+<!-- Adicione o script do reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

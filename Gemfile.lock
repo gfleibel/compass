@@ -238,6 +238,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    recaptcha (5.14.0)
     redis (5.0.6)
       redis-client (>= 0.9.0)
     redis-client (0.14.1)
@@ -347,6 +348,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit
   rails (~> 7.0.5)
+  recaptcha
   redis
   sassc-rails
   selenium-webdriver
