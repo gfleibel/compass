@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def contact_submit
     # Verificar o reCAPTCHA
     recaptcha_response = params['g-recaptcha-response']
-    recaptcha_secret_key = RECAPTCHA_PRIVATE_KEY
+    recaptcha_secret_key = ENV[RECAPTCHA_PRIVATE_KEY]
 
     recaptcha_verification_url = "https://www.google.com/recaptcha/api/siteverify"
     response = HTTParty.post(recaptcha_verification_url, body: { secret: recaptcha_secret_key, response: recaptcha_response })
