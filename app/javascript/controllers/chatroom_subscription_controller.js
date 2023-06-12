@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
   static values = { chatroomId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "input"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -19,6 +19,7 @@ export default class extends Controller {
   };
 
   resetForm(event) {
+    console.log(event);
     event.target.reset()
   }
 };
