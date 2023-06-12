@@ -64,7 +64,12 @@
             <p><%= user_match.mentor_current_employer %></p>
           </div>
           <div class="user-card-footer">
-            <%= link_to "Acessar", profile_path(user_match.id), class: "btn button mt-3" %>
+            <div class="d-flex gap-1 mt-4">
+              <%= link_to "Acessar", profile_path(user_match.id), class: "btn button" %>
+              <% if match.matched? %>
+                <%= link_to "Mensagens", profile_match_chatroom_path(match_id: match.id, id: match.chatroom.id), class: "btn btn-secondary" %>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
