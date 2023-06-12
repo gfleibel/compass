@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     else
       # O reCAPTCHA falhou, lide com o erro
       flash[:error] = "Erro na validação do reCAPTCHA"
-      redirect_to your_contact_form_path
+      redirect_to contact_path
     end
   end
 
