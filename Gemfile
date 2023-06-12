@@ -91,3 +91,4 @@ gem 'letter_opener', group: :development
 
 gem "sidekiq", "~> 6.0"
 gem "sidekiq-failures", "~> 1.0"
+gem "recaptcha", require: "recaptcha/rails"
