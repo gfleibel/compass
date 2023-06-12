@@ -3,6 +3,7 @@ class Match < ApplicationRecord
 
   belongs_to :mentor, class_name: 'User'
   belongs_to :mentee, class_name: 'User'
+  has_one :chatroom, dependent: :destroy
 
   validates :mentor_id, uniqueness: { scope: :mentee_id }
 
