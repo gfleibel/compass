@@ -12,7 +12,7 @@
       <%= form.text_area :message, class: "form-input" %>
 
       <!-- Adicione o reCAPTCHA -->
-      <div class="g-recaptcha" data-sitekey="<%= ENV['RECAPTCHA_PUBLIC_KEY'] %>"></div>
+      <div class="g-recaptcha" data-sitekey=<%= ENV['RECAPTCHA_PUBLIC_KEY'] %>></div>
 
       <%= form.submit "Enviar", class: "btn button mt-4" %>
     <% end %>
