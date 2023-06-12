@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_165035) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_184435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_165035) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "match_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_chatrooms_on_match_id"
+  end
+
   create_table "matches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,6 +57,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_165035) do
     t.boolean "matched", default: false
     t.index ["mentee_id"], name: "index_matches_on_mentee_id"
     t.index ["mentor_id"], name: "index_matches_on_mentor_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "programming_languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "programming_languages_options", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,8 +115,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_165035) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_programming_languages", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "programming_language_id", null: false
+    t.index ["programming_language_id", "user_id"], name: "index_programming_languages_users"
+    t.index ["user_id", "programming_language_id"], name: "index_users_programming_languages"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "matches"
   add_foreign_key "matches", "users", column: "mentee_id"
   add_foreign_key "matches", "users", column: "mentor_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end

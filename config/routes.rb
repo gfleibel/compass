@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
 
   resources :profiles do
-    resources :matches, only: %i[create destroy index update]
+    resources :matches, only: %i[create destroy index update] do
+      resources :chatrooms, only: :show do
+        resources :messages, only: :create
+      end
+    end
   end
 
 

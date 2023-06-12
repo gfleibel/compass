@@ -1,0 +1,19 @@
+<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <h1>Seu Match</h1>
+
+  <div class="messages" data-chatroom-subscription-target="messages">
+    <% @chatroom.messages.each do |message| %>
+       <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+</div>
+
+
+<%= simple_form_for [@chatroom, @message], url: profile_match_chatroom_messages_path(profile_id: params[:profile_id], match_id: params[:match_id], chatroom_id: @chatroom.id), method: :post,  html: { data: { turbo_action: "submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message Your Match",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
