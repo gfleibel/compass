@@ -77,7 +77,7 @@
         <%= link_to "Seus mentorados", profile_matches_path(current_user), class: "btn btn-secondary" %>
       <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id == @user.id %>
         <%= link_to "Seu mentor", profile_matches_path(current_user), class: "btn button" %>
-      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id != @user.id || current_user.mentor == true && current_user.id != @user.id  %>
+      <% elsif Match.exists?(mentee_id: current_user.id, mentor_id: @user.id) && current_user.id != @user.id || current_user.mentor == true && current_user.id != @user.id  %>
         <div class="d-flex justify-content-between">
           <%= link_to "Voltar", profile_matches_path(current_user), class: "btn btn-secondary" %>
           <%= link_to "Excluir mentoria", profile_match_path(id: @matched.id, profile_id: @user.id), data: {turbo_method: :delete, turbo_confirm: 'Você tem certeza que deseja interromper a mentoria?'}, class: "btn btn-danger text-light"%>
