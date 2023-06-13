@@ -91,4 +91,6 @@ gem "sidekiq", "~> 6.0"
 gem "sidekiq-failures", "~> 1.0"
 gem "recaptcha", require: "recaptcha/rails"
 gem "httparty"
+gem 'city-state'
 gem "google-cloud-vision"
+
