@@ -1,6 +1,8 @@
-<div class="container p-5 mt-3 card">
+<div class="p-5 mt-3 card">
 
-  <div class="d-flex align-items-center">
+
+  <div class="d-flex align-items-center gap-4 profile-wrapper">
+
     <div class="profile-user-section">
       <% if @user.photo.key %>
         <%= cl_image_tag @user.photo.key%>
@@ -40,7 +42,7 @@
       <p><%= @user.about_me %></p>
 
       <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Formação</span> profissional:</h2>
-      <div class="d-flex gap-2">
+      <div class="d-flex gap-2 flex-wrap">
         <h5><span class="badge rounded-pill bg-secondary"><%= @user.professional_field %></h5>
         <h5><span class="badge rounded-pill bg-secondary"><%= @user.academic_degree %></h5>
       </div>
@@ -53,13 +55,11 @@
 
       <p><%= @user.transition_about %></p>
       <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Linguagens</span> de programação:</h2>
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 flex-wrap">
           <% @user.programming_language.drop(1).each do |language| %>
             <h5><span class="badge rounded-pill bg-secondary"><%= language %></span></h5>
           <% end %>
         </div>
-
-
 
       <% if @user.mentor == true %>
         <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Experiência:</span></h2>
