@@ -1,11 +1,13 @@
-<div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <div class="container p-5 m-5">
+<div class="container p-5 m-5">
+  <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
     <h1 class="fs-1 mb-4">Mensagens</h1>
-    <div class="border p-5" data-chatroom-subscription-target="messages">
+
+    <div class="chatbox border p-5" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
          <%= render "messages/message", message: message %>
       <% end %>
     </div>
+
     <%= simple_form_for [@chatroom, @message], url: profile_match_chatroom_messages_path(profile_id: params[:profile_id], match_id: params[:match_id], chatroom_id: @chatroom.id), method: :post,  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
       <%= f.input :content,
         label: false,
@@ -14,6 +16,8 @@
       %>
       <%= f.submit "Enviar", class: "btn button mb-3" %>
     <% end %>
+
     <%= link_to "Voltar", profile_matches_path(params[:id]), class: "btn btn-secondary" %>
+
   </div>
 </div>
