@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="user-section col-4">
+<div class="row m-0">
+  <div class="user-section col-12 col-md-4">
     <div class="user-section-container">
       <% if current_user.photo.key %>
         <%= cl_image_tag current_user.photo.key%>
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="profiles-section col-8">
+  <div class="profiles-section col-12 col-md-8">
 
   <% if @mentors.empty? %>
     <h3 class="mt-5 pt-5">Nenhum mentor disponível por enquanto. :(</h3>
@@ -45,26 +45,33 @@
   <% else %>
     <h3 class="mx-5 px-5">Esses são os <span style="color:rgb(205,0,0)">mentores</span> que podem te ajudar na sua transição de carreira. </h3>
     <div class="cards">
+
       <% @mentors.each_with_index do |mentor, index| %>
         <% if index < 15 %>
           <div class="card-category">
             <div class="user-card-img">
+
               <% if mentor.photo.key %>
                 <%= cl_image_tag mentor.photo.key%>
               <% else %>
                 <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
               <% end %>
+
             </div>
+
             <div class="card-info">
               <h3><%= "#{mentor.first_name} #{mentor.last_name}" %></h3>
               <p><%= mentor.field_of_work %></p>
               <p><%= mentor.mentor_current_employer %></p>
             </div>
+
             <div class="user-card-footer">
               <%= link_to "Acessar", profile_path(mentor.id), class: "btn button mt-3" %>
             </div>
+
           </div>
         <% end %>
+
       <% end %>
     </div>
   <% end %>

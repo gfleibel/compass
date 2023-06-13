@@ -31,17 +31,17 @@
         <%= f.input :academic_degree, label: "Formação", hint: "Escreva o nome do curso no qual você se formou", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
         <% if current_user.mentor == true %>
           <%= f.input :field_of_work, label: "Campo/Stack de atuação", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
-          <%= f.input :programming_language, label: "Principal Linguagem de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
+          <%= f.input :programming_language, label: "Principais Linguagens de Programação", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "Solidity", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione a sua principal linguagem de programação" %>
         <% else %>
           <%= f.input :field_of_work, label: "Área/Stack de interesse", as: :select, collection: ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]%>
-          <%= f.input :programming_language, label: "Você já conhece alguma linguagem de programação?", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], prompt: "Selecione a sua principal linguagem de programação" %>
+          <%= f.input :programming_language, label: "Quais linguagens de programação você conhece?", as: :select, collection: ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "Solidity", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"], input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as sua principais linguagem de programação" %>
         <% end %>
         <%= f.input :mentor, as: :hidden%>
         <% if current_user.mentor == true %>
           <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
           <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["Menos de 1 ano", "1 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
         <% end %>
- <%= f.input :github, label: "GitHub Username", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu usuário do GitHub" } %>
+        <%= f.input :github, label: "GitHub Username", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu usuário do GitHub" } %>
         <%= f.input :linkedin, label: "LinkedIn", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu perfil do LinkedIn"}, hint: 'https://www.linkedin.com/in/seu-usuario/'  %>        <%= f.input :personal_site, label: "Site Pessoal", input_html: { autocomplete: 'url', autocapitalize: 'none' } %>
         <%= f.input :photo, label: "Foto", as: :file %>
         <%= f.input :about_me, label: "Conte um pouco sobre você", as: :text %>

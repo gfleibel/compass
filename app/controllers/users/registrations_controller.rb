@@ -45,13 +45,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, programming_language: []])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, programming_language: []])
+  # end
+
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -65,6 +69,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :country, :state, :city, :professional_field, :academic_degree, :programming_language, :mentor_current_employer, :mentor_transition_date, :github, :linkedin, :personal_site, :other_info, :mentor)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :country, :state, :city, :professional_field, :academic_degree, :mentor_current_employer, :mentor_transition_date, :github, :linkedin, :personal_site, :other_info, :mentor, programming_language: [])
   end
 end
