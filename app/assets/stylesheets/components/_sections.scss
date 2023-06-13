@@ -81,6 +81,11 @@
   }
 }
 
+.chatbox{
+  height: 50vh;
+  overflow-y: scroll;
+}
+
 @media (max-width: 760px) {
   .profile-wrapper{
     flex-direction: column;
