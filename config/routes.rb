@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get "recursos", to: "pages#resources", as: :resources
   get "codigo-de-conduta", to: "pages#conduct", as: :conduct
   get "users/signup/:type", to: "registration#new", as: :new_type
+  get "sobre", to: "pages#about", as: :about
 end
