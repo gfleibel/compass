@@ -4,6 +4,9 @@ require 'uri'
 class NsfwDetectionService
   def initialize(image_url)
     @image_url = image_url
+    # "https://res.cloudinary.com/duomnddyc/image/upload/v1686681863/development/9fvb7uu1qlsfpkjo60a2gw7b5xib.jpg"
+    # "http://res.cloudinary.com/duomnddyc/image/upload/v1/development/gseputawx0nqs9veyeku3swp1obx.jpeg"
+    raise
   end
 
   Rails.application.config.api_key = 'c421317a4dmsh0290e6f7fab8b1ep189a92jsna807f15435cb'

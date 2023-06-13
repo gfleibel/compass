@@ -16,13 +16,13 @@ class User < ApplicationRecord
     return unless photo.attached? # Assumindo que você tem um campo de avatar anexado
 
     # Obtenha a URL do avatar anexado
-    image_url = photo.url
+    image_url = photo.blob.url
 
     # Execute a detecção de conteúdo NSFW
     nsfw_service = NsfwDetectionService.new(image_url)
     nsfw_result = nsfw_service.detect_nsfw_content
 
     # Verifique se o resultado indica conteúdo NSFW
-    errors.add(:photo, 'contains NSFW content. Please upload a different image.') if nsfw_result == true
+    errors.add(:photo, 'A foto contém conteúdo sensível. Por favor, faça o upload de uma imagem diferente.') if nsfw_result == true
   end
 end
