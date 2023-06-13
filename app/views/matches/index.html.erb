@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="user-section col-4">
+<div class="row m-0">
+  <div class="user-section col-12 col-md-4">
     <div class="user-section-container">
       <% if current_user.photo.key %>
         <%= cl_image_tag current_user.photo.key%>
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="profiles-section col-8">
+  <div class="profiles-section col-12 col-md-8">
     <% if current_user.mentor == true && @matches.present?%>
       <h3 class="fw-bold">Seus <span style="color: rgb(205, 0, 0);">mentorados</span></h3>
     <% elsif current_user.mentor == false && @matches.present? %>
