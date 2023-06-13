@@ -45,7 +45,6 @@
   width: 280px;
   object-fit: cover;
   padding: 30px;
-  margin-right: 2em;
   }
 }
 .user-section-container {
@@ -79,5 +78,11 @@
   h3 {
     margin-bottom: 2em;
     font-weight: bold;
+  }
+}
+
+@media (max-width: 760px) {
+  .profile-wrapper{
+    flex-direction: column;
   }
 }
