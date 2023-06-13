@@ -18,6 +18,16 @@
   }
 }
 
+
+.img-about {
+  border-radius: 50%;
+  height: 220px;
+  width: 220px;
+  object-fit: cover;
+  margin: 0 auto 2em auto;
+  }
+
+
 .profile-user-section {
   p {
     margin-bottom: 1.5em;
@@ -35,7 +45,6 @@
   width: 280px;
   object-fit: cover;
   padding: 30px;
-  margin-right: 2em;
   }
 }
 .user-section-container {
@@ -69,5 +78,16 @@
   h3 {
     margin-bottom: 2em;
     font-weight: bold;
+  }
+}
+
+.chatbox{
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+@media (max-width: 760px) {
+  .profile-wrapper{
+    flex-direction: column;
   }
 }

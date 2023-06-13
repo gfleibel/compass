@@ -1,7 +1,7 @@
 module UserHelper
   def match(user)
     matches = User.where(mentor: true).map do |mentor|
-      common_languages = mentor.programming_language.drop(1).intersection(mentor.programming_language.drop(1))
+      common_languages = mentor.programming_language.intersection(mentor.programming_language)
       points = 0
       points += 4 if mentor.professional_field == user.professional_field
       points += 4 if mentor.academic_degree.downcase.strip == user.academic_degree.downcase.strip
