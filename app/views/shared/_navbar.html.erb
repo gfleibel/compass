@@ -10,24 +10,24 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto align-items-center">
+      <ul class="navbar-nav me-auto align-items-center gap-2">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active ms-4">
+          <li class="nav-item">
             <%= link_to "Perfil", profile_path(current_user), class: "nav-link" %>
           </li>
-          <li class="nav-item active ms-4">
+          <li class="nav-item">
             <%= link_to "Contato", contact_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active ms-4">
+          <li class="nav-item">
             <%= link_to "Sobre", about_path, class: "nav-link" %>
           </li>
-          <li class="ms-4">
-            Olá, <%= current_user.first_name%>
+          <li>
+            <em>Olá,<%= current_user.first_name%>!</em>
           </li>
-          <li class="nav-item dropdown ms-4">
+          <li class="nav-item dropdown ms-2">
             <% if current_user.photo.key %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
             <% else %>
@@ -39,13 +39,13 @@
             </div>
           </li>
         <% else %>
-        <li class="nav-item active">
+        <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active ms-4">
+          <li class="nav-item ms-4">
             <%= link_to "Sobre", about_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active ms-4">
+          <li class="nav-item ms-4">
             <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
