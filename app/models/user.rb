@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validate :validate_nsfw_content
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
@@ -12,4 +11,15 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, :country, :city, :state, :professional_field, :academic_degree, presence: true
   validates :github, format: { with: /\A[A-Za-z0-9]+\z/ }, uniqueness: true, allow_blank: true
   validates :linkedin, format: { with: /https:\/\/www\.linkedin\.com\/in\/.*/ }, uniqueness: true, allow_blank: true
+
+  include CloudinaryHelper
+
+  def validate_nsfw_content
+    return unless photo.attached?
+    image_url = cloudinary_url(photo.key)
+    nsfw_service = NsfwDetectionService.new(image_url)
+    nsfw_result = nsfw_service.detect_nsfw_content
+
+    errors.add(:photo, 'A foto contém conteúdo explícito/sensível. Por favor, faça o upload de uma imagem diferente.') if nsfw_result == true
+  end
 end

@@ -228,6 +228,8 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.6)
       date
       net-protocol
@@ -361,6 +363,7 @@ GEM
       faraday-multipart (~> 1.0.4)
       httparty (~> 0.20)
       oauth2 (>= 2.0.8)
+    uri (0.12.1)
     version_gem (1.1.3)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -404,6 +407,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener
+  net-http
   pg (~> 1.1)
   puma (~> 5.0)
   pundit

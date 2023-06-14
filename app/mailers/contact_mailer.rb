@@ -3,6 +3,6 @@ class ContactMailer < ApplicationMailer
     @name = name
     @message = message
     @email = email
-    mail(to: "no.reply.compass.app@gmail.com", subject: "Contato | #{name} - #{email}")
+    mail(to: "compass.dev.br@gmail.com", subject: "Contato | #{name} - #{email}")
   end
 end
