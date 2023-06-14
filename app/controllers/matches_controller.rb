@@ -40,8 +40,8 @@ class MatchesController < ApplicationController
     authorize @match
     @match.update(match_params)
     @chatroom = Chatroom.create(match: @match)
-    UserMailer.with(user: @match.mentor_id, mentee: @match.mentee_id).confirmation_mentor.deliver_now
-    UserMailer.with(user: @match.mentee_id, mentor: @match.mentor_id).confirmation_mentee.deliver_now
+    UserMailer.with(user: @match.mentor_id, mentee: @match.mentee_id).confirmation_mentor.deliver_later
+    UserMailer.with(user: @match.mentee_id, mentor: @match.mentor_id).confirmation_mentee.deliver_later
     redirect_to profile_matches_path(@match)
   end
 
