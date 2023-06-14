@@ -14,6 +14,13 @@ class User < ApplicationRecord
 
   include CloudinaryHelper
 
+  include PgSearch::Model
+
+  pg_search_scope :search_user,
+    against: %i[first_name last_name id email],
+    using: {
+      tsearch: { prefix: true }
+    }
   def validate_nsfw_content
     return unless photo.attached?
     image_url = cloudinary_url(photo.key)
