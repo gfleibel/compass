@@ -1,5 +1,5 @@
 <div class="container p-5">
-  <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-user-id-value="<%= current_user.id %>">
     <h1 class="fs-1 mb-4">Mensagens</h1>
 
     <div class="chatbox border p-2" data-chatroom-subscription-target="messages">
