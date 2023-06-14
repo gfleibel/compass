@@ -1,0 +1,43 @@
+<h3 class="mx-5 px-5 text-center">Esses são todos os <span style="color:rgb(205,0,0)">usuários</span> da Compass. </h3>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: user_admins_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Pesquise por nome, email ou id"
+        %>
+      <%= submit_tag "Pesquisar", name: "", class: "button btn" %>
+    <% end %>
+  </div>
+</div>
+<div class="p-5 mt-3 card">
+  <div class="cards">
+
+    <% @users.each_with_index do |user, index| %>
+      <% if index < 15 %>
+        <div class="card-category">
+          <div class="user-card-img">
+            <% if user.photo.key %>
+              <%= cl_image_tag user.photo.key%>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png"%>
+            <% end %>
+          </div>
+
+          <div class="card-info">
+            <h3><%= "#{user.first_name} #{user.last_name}" %></h3>
+            <p><%= user.field_of_work %></p>
+            <p><%= user.mentor_current_employer %></p>
+          </div>
+
+          <div class="user-card-footer">
+            <%= link_to "Acessar",  user_admin_path(user.id), class: "btn button mt-3" %>
+          </div>
+
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
