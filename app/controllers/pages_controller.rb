@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     if response['success']
       # O reCAPTCHA foi validado com sucesso, continue com o envio do formulário
       mail = ContactMailer.with(name: params[:name], email: params[:email], message: params[:message]).contact_email(params[:name], params[:email], params[:message])
-      mail.deliver_now
+      mail.deliver_later
       redirect_to root_path
     else
       # O reCAPTCHA falhou, lide com o erro

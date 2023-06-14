@@ -40,7 +40,16 @@
     width: 160px;
     height: 160px;
     overflow: hidden;
+    position: absolute;
   }
+}
+
+.fa-circle-check::before {
+  content: "\f058";
+  position: relative;
+  left: 88px;
+  bottom: 69px;
+  font-size: 32px;
 }
 
 .user-card-header {

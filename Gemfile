@@ -93,4 +93,5 @@ gem "recaptcha", require: "recaptcha/rails"
 gem "httparty"
 gem 'city-state'
 gem "google-cloud-vision"
-
+gem 'net-http'
+gem "pg_search"

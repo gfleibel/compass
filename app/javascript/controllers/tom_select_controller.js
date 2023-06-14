@@ -9,10 +9,13 @@ export default class extends Controller {
     const optionsValue = this.optionsValue;
 
     if(optionsValue != "") {
-      new TomSelect(
+      const select = new TomSelect(
         this.element ,
         this.optionsValue
       );
+      select.on("change", () => {
+        select.setTextboxValue("");
+      });
     }
   }
 }

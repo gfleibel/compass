@@ -61,33 +61,17 @@
           <% end %>
         </div>
 
-      <% if @user.mentor == true %>
-        <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Experiência:</span></h2>
-        <h5><span class="badge rounded-pill bg-secondary"><%= @user.years_of_experience %></h5>
-      <% end %>
+      <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Experiência:</span></h2>
+      <h5><span class="badge rounded-pill bg-secondary"><%= @user.years_of_experience %></h5>
+      <h2 class="pt-5"><span class="fw-bold" style="color: rgb(205, 0, 0);">Email:</span></h2>
+      <h5><span class="badge rounded-pill bg-secondary"><%= @user.email %></h5>
     </div>
 
     <div class="pt-5">
       <div class="d-flex gap-2 mt-2">
-      <% if current_user.mentor == false && Match.find_by(mentee_id: current_user.id).nil? && current_user.id != @user.id%>
-        <%= simple_form_for @match, url: profile_matches_path(@user), method: :post do |f|%>
-          <%= f.submit "Solicitar Mentoria", class: "btn button"  %>
-        <% end %>
-        <%= link_to "Voltar", profiles_path, class: "btn btn-secondary" %>
-      <% end %>
+        <%= link_to "Voltar", user_admins_path, class: "btn btn-secondary" %>
+        <%= link_to "Excluir usuário", user_admin_path(id: @user.id), data: {turbo_method: :delete, turbo_confirm: 'Você tem certeza que deseja excluir esse usuário?'}, class: "btn btn-danger text-light"%>
       </div>
-      <% if current_user.mentor == true && current_user.id == @user.id %>
-        <%= link_to "Seus mentorados", profile_matches_path(current_user), class: "btn btn-secondary" %>
-      <% elsif Match.exists?(mentee_id: current_user.id) && current_user.id == @user.id %>
-        <%= link_to "Seu mentor", profile_matches_path(current_user), class: "btn button" %>
-      <% elsif Match.exists?(mentee_id: current_user.id, mentor_id: @user.id) && current_user.id != @user.id || current_user.mentor == true && current_user.id != @user.id  %>
-        <div class="d-flex justify-content-between">
-          <%= link_to "Voltar", profile_matches_path(current_user), class: "btn btn-secondary" %>
-          <%= link_to "Excluir mentoria", profile_match_path(id: @matched.id, profile_id: @user.id), data: {turbo_method: :delete, turbo_confirm: 'Você tem certeza que deseja interromper a mentoria?'}, class: "btn btn-danger text-light"%>
-        </div>
-      <% elsif current_user.id == @user.id%>
-        <%= link_to "Encontre seu mentor!", profiles_path, class: "btn button" %>
-      <% end %>
     </div>
 
   </div>

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_admins, only: %i[index show destroy]
+
 
   get "contato", to: "pages#contact", as: :contact
   post "contato", to: "pages#contact_submit", as: :contact_submit
