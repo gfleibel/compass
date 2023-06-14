@@ -14,6 +14,10 @@
 .nav-item:hover {
   font-weight: bold;
   a {
-    color: rgb(205,0,0);
+    color: rgb(146, 0, 0);
   }
+}
+
+.dropdown-item:hover {
+  color: rgb(146, 0, 0);
 }
