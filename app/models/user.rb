@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validate :validate_nsfw_content
+  after_commit :validate_nsfw_content, if: -> { photo.attached? && !@file_processed }
+  # after_update :validate_nsfw_content
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
@@ -15,11 +16,12 @@ class User < ApplicationRecord
   include CloudinaryHelper
 
   def validate_nsfw_content
+    @file_processed = true
     return unless photo.attached?
-    image_url = cloudinary_url(photo.key)
+
+    image_url = photo.url
     nsfw_service = NsfwDetectionService.new(image_url)
     nsfw_result = nsfw_service.detect_nsfw_content
-
-    errors.add(:photo, 'A foto contém conteúdo explícito/sensível. Por favor, faça o upload de uma imagem diferente.') if nsfw_result == true
+    photo.purge if nsfw_result == true
   end
 end
