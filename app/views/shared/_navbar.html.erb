@@ -31,7 +31,7 @@
             <% if current_user.photo.key %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
             <% else %>
-              <%= image_tag "https://res.cloudinary.com/duomnddyc/image/upload/v1686064765/user_default_q1ttiu.png", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
+              <%= image_tag "https://res.cloudinary.com/divlfrgfp/image/upload/v1686756854/default_avatar.jpg", class: "avatar dropdown-toggle" , id: "navbarDropdown", data: { bs_toggle: "dropdown" }, "aria-haspopup": true, "aria-expanded": false, height: 50, width: 50, crop: :fill%>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Editar Perfil",edit_user_registration_path, class: "dropdown-item" %>
@@ -46,7 +46,7 @@
             <%= link_to "Sobre", about_path, class: "nav-link" %>
           </li>
           <li class="nav-item ms-2">
-            <%= link_to "Cadastrar", "#cadastro", class: "nav-link" %>
+            <%= link_to "Cadastrar", root_path(anchor: "cadastro"), class: "nav-link" %>
           </li>
           <li class="nav-item ms-2">
             <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
