@@ -9,17 +9,17 @@
       <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
       <div class="links">
         <% if current_user.github.present? %>
-          <%= link_to "https://github.com/#{current_user.github}" do %>
+          <%= link_to "https://github.com/#{current_user.github}", target: "_blank" do %>
             <i class="fab fa-github" style="color:rgb(205,0,0)"></i>
           <% end %>
         <% end %>
         <% if current_user.linkedin.present? %>
-          <%= link_to current_user.linkedin do %>
+          <%= link_to current_user.linkedin, target: "_blank" do %>
             <i class="fab fa-linkedin" style="color:rgb(205,0,0)"></i>
           <% end %>
         <% end %>
         <% if current_user.personal_site.present? %>
-          <%= link_to current_user.personal_site do%>
+          <%= link_to current_user.personal_site, target: "_blank" do%>
             <i class="fa-solid fa-globe" style="color:rgb(205,0,0)"></i>
           <% end %>
         <% end %>
