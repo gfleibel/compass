@@ -6,7 +6,7 @@
   <% end %>>
   <small>
     <strong><%= message.user.first_name %></strong>
-    <i>(<%= message.created_at.strftime("%e/%b às %l:%M %p") %>)</i>
+    <i>(<%= message.created_at.in_time_zone("Brasilia").strftime("%e/%b às %l:%M %p") %>)</i>
   </small>
   <p><%= message.content %></p>
 </div>
