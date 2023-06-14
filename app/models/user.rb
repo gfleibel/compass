@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
+  PROFESSIONAL_FIELDS = ["Tecnologia", "Saúde", "Educação", "Engenharias", "Ciências Exatas", "Música, Artes e Design", "Ciências Sociais",  "Comunicação e Informação", "Negócios", "Ciências Biológicas", "Direito", "Outros"]
+  FIELDS_OF_WORK = ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]
+  PROGRAMMING_LANGUAGES = ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "Solidity", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"]
+
   pg_search_scope :search_user,
     against: %i[first_name last_name id email],
     using: {
