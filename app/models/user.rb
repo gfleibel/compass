@@ -17,7 +17,6 @@ class User < ApplicationRecord
 
   def validate_nsfw_content
     @file_processed = true
-    puts '*' * 100
     return unless photo.attached?
 
     image_url = photo.url
