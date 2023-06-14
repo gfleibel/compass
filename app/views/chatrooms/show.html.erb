@@ -2,7 +2,7 @@
   <div data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
     <h1 class="fs-1 mb-4">Mensagens</h1>
 
-    <div class="chatbox border p-5" data-chatroom-subscription-target="messages">
+    <div class="chatbox border p-2" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message%>
       <% end %>
