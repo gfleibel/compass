@@ -12,17 +12,14 @@ class User < ApplicationRecord
   validates :github, format: { with: /\A[A-Za-z0-9]+\z/ }, uniqueness: true, allow_blank: true
   validates :linkedin, format: { with: /https:\/\/www\.linkedin\.com\/in\/.*/ }, uniqueness: true, allow_blank: true
 
+  include CloudinaryHelper
+
   def validate_nsfw_content
-    return unless photo.attached? # Assumindo que você tem um campo de avatar anexado
-
-    # Obtenha a URL do avatar anexado
-    image_url = photo.blob.url
-
-    # Execute a detecção de conteúdo NSFW
+    return unless photo.attached?
+    image_url = cloudinary_url(photo.key)
     nsfw_service = NsfwDetectionService.new(image_url)
     nsfw_result = nsfw_service.detect_nsfw_content
 
-    # Verifique se o resultado indica conteúdo NSFW
-    errors.add(:photo, 'A foto contém conteúdo sensível. Por favor, faça o upload de uma imagem diferente.') if nsfw_result == true
+    errors.add(:photo, 'A foto contém conteúdo explícito/sensível. Por favor, faça o upload de uma imagem diferente.') if nsfw_result == true
   end
 end
