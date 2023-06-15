@@ -4,7 +4,9 @@ class ProfilesController < ApplicationController
   def index
     @users = policy_scope(User)
     redirect_to profile_matches_path(current_user) if Match.where(mentee_id: current_user.id).exists?
-    @mentors = helpers.match(current_user)
+    match_results = helpers.match(current_user)
+    @mentors = match_results[:mentors]
+    @mentors_id = match_results[:mentors_id]
   end
 
   def show
