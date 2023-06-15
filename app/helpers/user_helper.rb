@@ -15,6 +15,6 @@ module UserHelper
     mentors_id.each do |mentor|
       mentors << User.find(mentor[0])
     end
-    { mentors: mentors, mentors_id: mentors_id }
+    mentors
   end
 end
