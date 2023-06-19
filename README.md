@@ -7,14 +7,6 @@ Compass - Career Transition Platform
 
 Compass is a career transition platform designed to support non-tech professionals in their journey towards a career in technology with the aid of volunteer mentors. 
 
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Feature
 
 - Mentee & Mentor matching algorithm to guarantee a good fit of personal and professional backgrounds.
