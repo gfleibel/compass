@@ -74,6 +74,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "rspec"
 end
 
 gem "devise"
@@ -95,4 +96,3 @@ gem 'city-state'
 gem "google-cloud-vision"
 gem 'net-http'
 gem "pg_search"
-gem "rspec"
