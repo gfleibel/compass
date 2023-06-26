@@ -95,3 +95,4 @@ gem 'city-state'
 gem "google-cloud-vision"
 gem 'net-http'
 gem "pg_search"
+gem "rspec"
