@@ -36,6 +36,7 @@ pt-BR:
 
   errors:
     messages:
+      taken: já está em uso
       record_invalid: "Não foi possível salvar o registro: %{errors}"
       restrict_dependent_destroy:
         has_many: "Não foi possível excluir o registro pois existem %{record} relacionados"
