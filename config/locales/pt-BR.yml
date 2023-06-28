@@ -33,6 +33,9 @@ pt-BR:
       mentor_id: Mentor
       mentee_id: Mentee
       matched: Matched
+    errors:
+      messages:
+        record_invalid: "não é válido"
 
   errors:
     models:
