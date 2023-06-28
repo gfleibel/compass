@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# quando instanciado com atributos validos, o model deve ser validos
-# validacoes devem ser testadas
-# metodos de classe e instancia devem executar corretamente
-
 RSpec.describe User, type: :model do
   describe "validations" do
     it "is valid with valid attributes" do
@@ -12,7 +8,7 @@ RSpec.describe User, type: :model do
         last_name: "Doe",
         email: "john@example.com",
         password: "password",
-        country: "Brazil",
+        country: "Brasil",
         city: "São Paulo",
         state: "SP",
         professional_field: "Tecnologia",
@@ -93,16 +89,12 @@ RSpec.describe User, type: :model do
 
   describe "associations" do
     it "has many mentor_matches" do
-      user = User.new
       expect(User.reflect_on_association(:mentor_matches).macro).to eq(:has_many)
       expect(User.reflect_on_association(:mentor_matches).options[:foreign_key]).to eq('mentor_id')
       expect(User.reflect_on_association(:mentor_matches).options[:dependent]).to eq(:destroy)
     end
 
-
     it "has many mentee_matches" do
-      user = User.new
-      user = User.new
       expect(User.reflect_on_association(:mentee_matches).macro).to eq(:has_many)
       expect(User.reflect_on_association(:mentee_matches).options[:foreign_key]).to eq('mentee_id')
       expect(User.reflect_on_association(:mentee_matches).options[:dependent]).to eq(:destroy)

@@ -35,6 +35,9 @@ pt-BR:
       matched: Matched
 
   errors:
+    models:
+          user:
+            record_invalid: "O registro do usuário é inválido."
     messages:
       taken: já está em uso
       record_invalid: "Não foi possível salvar o registro: %{errors}"
