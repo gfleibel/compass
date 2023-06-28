@@ -1,0 +1,23 @@
+fake_mentee:
+  id: 1
+  first_name: "John"
+  last_name: "Doe"
+  email: "john@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  country: "Brazil"
+  city: "São Paulo"
+  state: "SP"
+  professional_field: "Tecnologia"
+  academic_degree: "Ciências da Computação"
+
+fake_mentor:
+  id: 2
+  first_name: "Jane"
+  last_name: "Doe"
+  email: "jane@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  country: "Brazil"
+  city: "Rio de Janeiro"
+  state: "RJ"
+  professional_field: "Negócios"
+  academic_degree: "Administração"
