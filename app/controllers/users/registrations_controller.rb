@@ -10,12 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # # POST /resource
-  # def create
-  #   @user = User.new(user_params)
-  #   @user.mentor_transition_date.present? ? @user.mentor = true : @user.mentor = false
-  #   @user.save
-  #   super
-  # end
+  def create
+    @user = User.new(user_params)
+    @user.mentor_transition_date.present? ? @user.mentor = true : @user.mentor = false
+    @user.save
+    UserMailer.confirmation_email(@user).deliver_later
+    super
+  end
 
   # GET /resource/edit
   # def edit

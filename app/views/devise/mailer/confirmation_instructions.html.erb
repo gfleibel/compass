@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<p>Olá <%= @user.first_name %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Obrigado por se cadastrar em nosso site! Estamos animados para começar essa jornada com você!</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>Para ativar sua conta, precisamos que você confirme seu e-mail. Clique no link abaixo para validar seu e-mail:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)%></p>
+
+<p>Atenciosamente,</p>
+<p>Compass</p>
