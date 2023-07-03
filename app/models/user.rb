@@ -6,7 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
-  # , :secure_validatable, :lockable, :timeoutable, :trackable
 
   has_many :mentor_matches, class_name: 'Match', foreign_key: 'mentor_id', dependent: :destroy
   has_many :mentee_matches, class_name: 'Match', foreign_key: 'mentee_id', dependent: :destroy
