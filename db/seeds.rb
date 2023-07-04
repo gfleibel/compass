@@ -59,19 +59,13 @@
 
 # script confirmacao email de usuarios ja existentes
 
-# users = User.where.not(id: [3, 28])
+users = User.where.not(id: [1, 3, 28])
 
-@user = User.find(1)
-@user.confirmation_token = Devise.friendly_token
-@user.confirmation_sent_at = Time.now.utc
-@user.save
+users.each do |user|
+  user.confirmation_token = Devise.friendly_token
+  user.confirmation_sent_at = Time.now.utc
+  user.save
+  user.confirmed_at = Time.now.utc
 
-UserMailer.confirmation_instructions(@user).deliver_later
-
-# users.each do |user|
-#   user.confirmation_token = Devise.friendly_token
-#   user.confirmation_sent_at = Time.now.utc
-#   user.save
-
-#   UserMailer.confirmation_instructions(user).deliver_now
-# end
+  UserMailer.confirmation_instructions(user).deliver_now
+end
