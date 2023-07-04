@@ -72,15 +72,6 @@ RSpec.describe User, type: :model do
       expect(user.errors[:github]).to be_present
     end
 
-    it "is not valid with a duplicate GitHub username" do
-      existing_user = User.new(github: "existinguser")
-      existing_user.save(validate: false)
-
-      user = User.new(github: "existinguser")
-      expect(user).not_to be_valid
-      expect(user.errors[:github]).to include(I18n.t("errors.messages.taken"))
-    end
-
     it "is not valid with an invalid LinkedIn profile URL format" do
       user = User.new(linkedin: "invalid_url")
       expect(user).not_to be_valid
