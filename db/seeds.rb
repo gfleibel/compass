@@ -66,6 +66,7 @@ users.each do |user|
   user.confirmation_sent_at = Time.now.utc
   user.save
   user.confirmed_at = Time.now.utc
+  user.save
 
   # UserMailer.confirmation_instructions(user).deliver_now
 end
