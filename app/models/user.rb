@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
 
   has_many :mentor_matches, class_name: 'Match', foreign_key: 'mentor_id', dependent: :destroy
   has_many :mentee_matches, class_name: 'Match', foreign_key: 'mentee_id', dependent: :destroy
@@ -22,10 +23,10 @@ class User < ApplicationRecord
   PROGRAMMING_LANGUAGES = ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "Solidity", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"]
 
   pg_search_scope :search_user,
-    against: %i[first_name last_name id email],
-    using: {
-      tsearch: { prefix: true }
-    }
+                  against: %i[first_name last_name id email],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
   def validate_nsfw_content
     @file_processed = true
     return unless photo.attached?
