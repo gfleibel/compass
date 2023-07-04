@@ -54,3 +54,17 @@ end
 
 puts "#{User.where(mentor: true).count} mentors created!"
 puts 'Finished! :D'
+
+
+
+# script confirmacao email de usuarios ja existentes
+
+# users = User.all
+
+# users.each do |user|
+#   user.confirmation_token = Devise.friendly_token
+#   user.confirmation_sent_at = Time.now.utc
+#   user.save
+
+#   UserMailer.confirmation_instructions(user).deliver_now
+# end
