@@ -11,8 +11,9 @@ class User < ApplicationRecord
   has_many :mentee_matches, class_name: 'Match', foreign_key: 'mentee_id', dependent: :destroy
 
   validates :first_name, :last_name, :email, :country, :city, :state, :professional_field, :academic_degree, presence: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]{2,}\z/i}
   validates :github, format: { with: /\A[A-Za-z0-9]+\z/ }, allow_blank: true
-  validates :linkedin, format: { with: /https:\/\/www\.linkedin\.com\/in\/.*/ }, uniqueness: true, allow_blank: true
+  validates :linkedin, format: { with: /https:\/\/www\.linkedin\.com\/in\/.*/ }, allow_blank: true
 
   include CloudinaryHelper
 
