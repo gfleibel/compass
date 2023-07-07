@@ -17,6 +17,16 @@
 .signup-background{
   background-image: url("https://res.cloudinary.com/divlfrgfp/image/upload/v1686756793/loginpichor.png");
   background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.resend-background {
+  background-image: url("https://res.cloudinary.com/divlfrgfp/image/upload/v1686756793/loginpichor.png");
+  background-size: cover;
   height: 100vh;
   object-fit: cover;
   overflow: hidden;
