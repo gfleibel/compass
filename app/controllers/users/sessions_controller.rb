@@ -13,6 +13,25 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def create
+    user = User.find_by(email: params[:user][:email])
+
+    if user&.valid_password?(params[:user][:password])
+      if user.confirmed?
+        set_flash_message!(:notice, :signed_in)
+        sign_in(user)
+        yield user if block_given?
+        respond_with user, location: after_sign_in_path_for(user)
+      else
+        flash[:alert] = "Antes de continuar, confirme a sua conta."
+        redirect_to new_user_confirmation_path
+      end
+    else
+      flash[:alert] = "Email ou senha inválidos."
+      redirect_to new_user_session_path
+    end
+  end
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
