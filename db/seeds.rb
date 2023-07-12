@@ -68,3 +68,12 @@
 #   user.confirmed_at = Time.now.utc
 #   user.save
 # end
+users = User.all
+
+users.each do |user|
+  user.confirmation_token = Devise.friendly_token
+  user.confirmation_sent_at = Time.now.utc
+  user.save
+  user.confirmed_at = Time.now.utc
+  user.save
+end

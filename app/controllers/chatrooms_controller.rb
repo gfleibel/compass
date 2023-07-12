@@ -4,5 +4,7 @@ class ChatroomsController < ApplicationController
     @message = Message.new
     authorize @chatroom
     authorize @message
+    @mentor = User.find(@chatroom.match.mentor_id)
+    @mentee = User.find(@chatroom.match.mentee_id)
   end
 end

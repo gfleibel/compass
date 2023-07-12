@@ -18,7 +18,7 @@
     <% end %>
 
     <%= link_to "Voltar", profile_matches_path(params[:id]), class: "btn btn-secondary" %>
-    <%= link_to "https://calendar.google.com/calendar/u/0/r/eventedit?state=%5Bnull%2Cnull%2Cnull%2Cnull%2C%5B13%5D%5D", class: "btn btn-secondary", target: "_blank" do %>
+    <%= link_to "https://calendar.google.com/calendar/u/0/r/eventedit?text=Mentoria%20Compass&state=%5Bnull%2Cnull%2Cnull%2Cnull%2C%5B13%5D%5D&add=#{@mentor.email}&add=#{@mentee.email}", class: "btn btn-secondary", target: "_blank" do %>
       <%= content_tag(:i, "", class: "fa-solid fa-calendar-days", style: "color: #ffffff;") %>
       Agendar Sessão
     <% end %>
