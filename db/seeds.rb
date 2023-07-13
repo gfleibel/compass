@@ -59,7 +59,7 @@
 
 # script confirmacao email de usuarios ja existentes
 
-# users = User.where.not(id: [1, 3, 28])
+# users = User.all
 
 # users.each do |user|
 #   user.confirmation_token = Devise.friendly_token
