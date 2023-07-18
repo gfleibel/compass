@@ -19,8 +19,9 @@ Compass is a career transition platform designed to support non-tech professiona
 
 ## Usage
 
-1. Start the server using `bin/dev` and `sidekiq`.
-2. Access the platform through your browser at `http://localhost:3000`.
+1. Start the server using `bin/dev`, `sidekiq` and `redis-server`.
+2. Run pending migrations with `rails db:migrate`.
+3. Access the platform through your browser at `http://localhost:3000`.
 
 ## Contributing
 
