@@ -21,8 +21,18 @@ class User < ApplicationRecord
 
   PROFESSIONAL_FIELDS = ["Tecnologia", "Saúde", "Educação", "Engenharias", "Ciências Exatas", "Música, Artes e Design", "Ciências Sociais",  "Comunicação e Informação", "Negócios", "Ciências Biológicas", "Direito", "Outros"]
   FIELDS_OF_WORK = ["Full-stack", "Front-end", "Back-end", "Product Manager", "UX/UI Designer", "Data Analyst", "Data Engineer", "Data Scientist"]
-  PROGRAMMING_LANGUAGES = ["Assembly", "C", "C++", "C#", "Dart", "Delphi/Object Pascal", "Go", "Groovy", "Haskell", "HTML/CSS", "Java", "JavaScript", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell", "Solidity", "SQL", "Swift", "TypeScript", "VB.NET", "Outra", "Nenhuma"]
-
+  PROGRAMMING_LANGUAGES = [
+    "Alibaba Cloud", "Angular", "ASP.NET Core", "Assembly", "AWS (Amazon Web Services)",
+    "Azure (Microsoft Azure)", "Bootstrap", "C", "C#", "C++", "CakePHP", "Chai", "CodeIgniter",
+    "Dart", "Delphi/Object Pascal", "DigitalOcean", "Django REST framework", "Ember.js", "Express.js",
+    "FastAPI", "Flask", "Flask-RESTful", "Gin", "Go", "Google Cloud Platform (GCP)", "Groovy",
+    "Haskell", "Heroku", "HTML/CSS", "IBM Cloud", "Ionic", "JavaScript", "Java", "Jest", "JHipster", "JUnit", "jQuery",
+    "Karma", "Kotlin", "Kubernetes", "Laravel", "Lua", "Material-UI", "MATLAB", "Meteor", "Mocha",
+    "Next.js", "NestJS", "Nuxt.js", "Objective-C", "OpenStack", "Oracle Cloud", "Outra", "Pandas",
+    "Perl", "PHP", "Play Framework", "PowerShell", "PyTorch", "Python", "R", "React.js", "React Native", "RSpec",
+    "Ruby", "Ruby on Rails", "Rust", "Scala", "Scikit-learn", "Shell", "Slim", "Solidity", "Spring Boot",
+    "SQL", "Swift", "Symfony", "TensorFlow", "TypeScript", "VB.NET", "Vue.js", "Vapor"
+]
   pg_search_scope :search_user,
                   against: %i[first_name last_name id email],
                   using: {
