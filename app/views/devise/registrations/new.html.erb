@@ -24,7 +24,9 @@
           <%= f.input :professional_field, label: "Em qual área você trabalhava antes de decidir migrar para tecnologia?", required: true, as: :select, collection:  User::PROFESSIONAL_FIELDS, prompt: "Selecione uma área profissional" %>
           <%= f.input :academic_degree, label: "Qual é a sua formação?", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
           <%= f.input :field_of_work, label: "Área/Stack de interesse", as: :select, collection: User::FIELDS_OF_WORK%>
-          <%= f.input :programming_language, label: "Quais linguagens de programação você conhece?", as: :select, collection: User::PROGRAMMING_LANGUAGES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as sua principais linguagem de programação" %>
+          <%= f.input :programming_language, label: "Principais Linguagens de Programação", as: :select, collection: User::PROGRAMMING_LANGUAGES,
+            input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } } },
+            prompt: "Selecione suas principais linguagens de programação" %>
         <% end %>
         <%= f.input :mentor, as: :hidden, input_html: { value: params[:type] == "mentor" ? true : false } %>
         <% if params[:type] == "mentor" %>
