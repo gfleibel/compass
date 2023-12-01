@@ -31,14 +31,14 @@
         <%= f.input :academic_degree, label: "Formação", hint: "Escreva o nome do curso no qual você se formou", required: true, input_html: { autocomplete: 'education-level', autocapitalize: 'words' } %>
         <% if current_user.mentor == true %>
           <%= f.input :field_of_work, label: "Campo/Stack de atuação", as: :select, collection: User::FIELDS_OF_WORK%>
-          <%= f.input :programming_language, label: "Principais Linguagens de Programação", as: :select, collection: User::PROGRAMMING_LANGUAGES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as suas principais linguagens de programação" %>
+          <%= f.input :programming_language, label: "Principais tecnologias utilizadas", as: :select, collection: User::PROGRAMMING_LANGUAGES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as suas principais tecnologias de desenvolvimento" %>
         <% else %>
           <%= f.input :field_of_work, label: "Área/Stack de interesse", as: :select, collection: User::FIELDS_OF_WORK%>
-          <%= f.input :programming_language, label: "Quais linguagens de programação você conhece?", as: :select, collection: User::PROGRAMMING_LANGUAGES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as sua principais linguagem de programação" %>
+          <%= f.input :programming_language, label: "Quais tecnologias você conhece?", as: :select, collection: User::PROGRAMMING_LANGUAGES, input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, prompt: "Selecione as suas principais tecnologias de desenvolvimento" %>
         <% end %>
         <%= f.input :mentor, as: :hidden%>
         <% if current_user.mentor == true %>
-          <%= f.input :mentor_current_employer, label: "Empresa Atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
+          <%= f.input :mentor_current_employer, label: "Empresa atual", input_html: { autocomplete: 'organization', autocapitalize: 'words' } %>
           <%= f.input :years_of_experience, label: "Tempo de experiência", as: :select, collection: ["Menos de 1 ano", "1 a 4 anos", "5 a 10 anos", "+ 10 anos"] %>
         <% end %>
         <%= f.input :github, label: "GitHub Username", input_html: { autocomplete: 'url', autocapitalize: 'none', placeholder: "Insira seu usuário do GitHub" } %>
