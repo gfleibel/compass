@@ -18,7 +18,7 @@
         </div>
       <% end %>
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <%= link_to "Esqueci minha senha", new_password_path(resource_name) %><br />
+        <%= link_to "Esqueci minha senha", new_password_path(resource_name), class: 'text-decoration-none', style: "color: #484848;" %><br />
       <% end %>
     </div>
   </div>
