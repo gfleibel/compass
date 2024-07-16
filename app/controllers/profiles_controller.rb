@@ -10,14 +10,15 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @match = Match.new
+
     if current_user.mentor?
-      @matched = Match.where(mentor_id: current_user.id, mentee_id: @user.id).first
+      fetch_mentor_matched
       @matched.nil? && current_user != @user ? redirect_to_root : @matched
     elsif current_user.mentor == false
-      current_match = Match.where(mentee_id: current_user.id).first
-      @matched = Match.where(mentor_id: @user.id, mentee_id: current_user.id).first
+      fetch_mentee_matched
       !current_match.nil? && @matched.nil? && current_user != @user ? redirect_to_root : @matched
     end
+
     authorize @user
   end
 
@@ -25,5 +26,14 @@ class ProfilesController < ApplicationController
 
   def redirect_to_root
     redirect_to root_path
+  end
+
+  def fetch_mentor_matched
+    @matched = Match.where(mentor_id: current_user.id, mentee_id: @user.id).first
+  end
+
+  def fetch_mentee_matched
+    current_match = Match.where(mentee_id: current_user.id).first
+    @matched = Match.where(mentor_id: @user.id, mentee_id: current_user.id).first
   end
 end

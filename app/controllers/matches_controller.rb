@@ -1,13 +1,13 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: %i[show edit update destroy]
+
   def index
     @user = policy_scope(User)
     @user = current_user
-    if @user.mentor?
-      all_matches = Match.where(mentor_id: @user.id)
-    else
-      all_matches = Match.where(mentee_id: @user.id)
-    end
+
+    where_match_type = @user.mentor? ? { mentor: @user } : { mentee: @user }
+    all_matches = Match.where(**where_match_type)
+
     @matches = all_matches.where(matched: true)
     @pending_matches = all_matches.where(matched: false)
     asyn_update
@@ -29,19 +29,16 @@ class MatchesController < ApplicationController
     @match.mentor_id = params[:profile_id]
     @match.mentee_id = current_user.id
     authorize @match
-    if @match.save
-      redirect_to profile_matches_path(@match), notice: 'Solicitação de mentoria criada com sucesso.'
-    else
-      redirect_to profile_matches_path(@match), alert: 'Erro na solicitação de mentoria.'
-    end
+    return redirect_to profile_matches_path(@match), notice: 'Solicitação de mentoria criada com sucesso.' if @match.save
+
+    redirect_to profile_matches_path(@match), alert: 'Erro na solicitação de mentoria.'
   end
 
   def update
     authorize @match
     @match.update(match_params)
     @chatroom = Chatroom.create(match: @match)
-    UserMailer.with(user: @match.mentor_id, mentee: @match.mentee_id).confirmation_mentor.deliver_later
-    UserMailer.with(user: @match.mentee_id, mentor: @match.mentor_id).confirmation_mentee.deliver_later
+    deliver_mail
     redirect_to profile_matches_path(@match)
   end
 
@@ -64,8 +61,11 @@ class MatchesController < ApplicationController
   end
 
   def asyn_update
-    @pending_matches.each do |match|
-      MatchTimeJob.perform_now(match)
-    end
+    @pending_matches.each{ |match| MatchTimeJob.perform_now(match) }
+  end
+
+  def deliver_mail
+    UserMailer.with(user: @match.mentor_id, mentee: @match.mentee_id).confirmation_mentor.deliver_later
+    UserMailer.with(user: @match.mentee_id, mentor: @match.mentor_id).confirmation_mentee.deliver_later
   end
 end
